@@ -64,7 +64,7 @@ class BrowsersResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/fleet-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/evrimai/fleet-client#accessing-raw-response-data-eg-headers
         """
         return BrowsersResourceWithRawResponse(self)
 
@@ -73,7 +73,7 @@ class BrowsersResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/fleet-python#with_streaming_response
+        For more information, see https://www.github.com/evrimai/fleet-client#with_streaming_response
         """
         return BrowsersResourceWithStreamingResponse(self)
 
@@ -355,7 +355,7 @@ class AsyncBrowsersResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/fleet-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/evrimai/fleet-client#accessing-raw-response-data-eg-headers
         """
         return AsyncBrowsersResourceWithRawResponse(self)
 
@@ -364,7 +364,7 @@ class AsyncBrowsersResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/fleet-python#with_streaming_response
+        For more information, see https://www.github.com/evrimai/fleet-client#with_streaming_response
         """
         return AsyncBrowsersResourceWithStreamingResponse(self)
 
