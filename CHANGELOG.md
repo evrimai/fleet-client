@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.1 (2025-08-22)
+
+Full Changelog: [v0.1.0...v0.1.1](https://github.com/evrimai/fleet-client/compare/v0.1.0...v0.1.1)
+
+### Chores
+
+* update github action ([c381e7b](https://github.com/evrimai/fleet-client/commit/c381e7bf6e43d386fba8b6a0b97c640fc546252d))
+
 ## 0.1.0 (2025-08-12)
 
 Full Changelog: [v0.0.1...v0.1.0](https://github.com/evrimai/fleet-client/compare/v0.0.1...v0.1.0)
