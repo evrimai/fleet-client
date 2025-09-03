@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Optional
 from typing_extensions import Required, TypedDict
+
+from .._types import SequenceNotStr
 
 __all__ = ["ProfileCaptureParams"]
 
@@ -11,4 +13,4 @@ __all__ = ["ProfileCaptureParams"]
 class ProfileCaptureParams(TypedDict, total=False):
     url: Required[str]
 
-    resource_types: Optional[List[str]]
+    resource_types: Optional[SequenceNotStr[str]]
