@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.2.0 (2025-09-06)
+
+Full Changelog: [v0.1.1...v0.2.0](https://github.com/evrimai/fleet-client/compare/v0.1.1...v0.2.0)
+
+### Features
+
+* improve future compat with pydantic v3 ([c8691f1](https://github.com/evrimai/fleet-client/commit/c8691f125561c469a298672d1e367111f7198bb3))
+* **types:** replace List[str] with SequenceNotStr in params ([8f32157](https://github.com/evrimai/fleet-client/commit/8f3215724d47844374b296b5ba086c7947157cd0))
+
+
+### Bug Fixes
+
+* avoid newer type syntax ([2a164e8](https://github.com/evrimai/fleet-client/commit/2a164e875d4cd861b984e3615a78aac98b9265bd))
+
+
+### Chores
+
+* **internal:** add Sequence related utils ([cd3e713](https://github.com/evrimai/fleet-client/commit/cd3e713c5830f3a836eedb2b975e22003d3f769c))
+* **internal:** change ci workflow machines ([0df0fba](https://github.com/evrimai/fleet-client/commit/0df0fba25bab2a88dfdd10712882a3daf09a7be6))
+* **internal:** move mypy configurations to `pyproject.toml` file ([8d878bf](https://github.com/evrimai/fleet-client/commit/8d878bf66b804f2363d81cf11b8776cea71c3013))
+* **internal:** update pyright exclude list ([e3e3610](https://github.com/evrimai/fleet-client/commit/e3e36109bc89d95d2feca7f8d57c4b44a4b64cfa))
+* **tests:** simplify `get_platform` test ([304818a](https://github.com/evrimai/fleet-client/commit/304818a66dc6b87b9d0dbf8962b1b0f74910f0ce))
+
 ## 0.1.1 (2025-08-22)
 
 Full Changelog: [v0.1.0...v0.1.1](https://github.com/evrimai/fleet-client/compare/v0.1.0...v0.1.1)
