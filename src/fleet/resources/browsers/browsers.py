@@ -21,7 +21,7 @@ from ...types import (
     browser_scrape_page_params,
     browser_download_file_params,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from .responses import (
@@ -85,7 +85,7 @@ class BrowsersResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> object:
         """List Browsers"""
         return self._get(
@@ -105,7 +105,7 @@ class BrowsersResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> object:
         """
         Close Browser
@@ -135,17 +135,17 @@ class BrowsersResource(SyncAPIResource):
         *,
         download_url: str,
         s3_bucket: str,
-        aws_access_key_id: Optional[str] | NotGiven = NOT_GIVEN,
-        aws_region: str | NotGiven = NOT_GIVEN,
-        aws_secret_access_key: Optional[str] | NotGiven = NOT_GIVEN,
-        s3_key: Optional[str] | NotGiven = NOT_GIVEN,
-        wait_until: WaitUntil | NotGiven = NOT_GIVEN,
+        aws_access_key_id: Optional[str] | Omit = omit,
+        aws_region: str | Omit = omit,
+        aws_secret_access_key: Optional[str] | Omit = omit,
+        s3_key: Optional[str] | Omit = omit,
+        wait_until: WaitUntil | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BrowserDownloadFileResponse:
         """
         Download a file via browser and upload it to S3.
@@ -190,7 +190,7 @@ class BrowsersResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BrowserGetMetadataResponse:
         """
         Get Browser Metadata
@@ -217,15 +217,15 @@ class BrowsersResource(SyncAPIResource):
     def launch(
         self,
         *,
-        headless: bool | NotGiven = NOT_GIVEN,
-        track_all_responses: bool | NotGiven = NOT_GIVEN,
-        url: str | NotGiven = NOT_GIVEN,
+        headless: bool | Omit = omit,
+        track_all_responses: bool | Omit = omit,
+        url: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BrowserLaunchResponse:
         """
         Launch Browser
@@ -260,13 +260,13 @@ class BrowsersResource(SyncAPIResource):
         browser_id: str,
         *,
         url: str,
-        wait_until: WaitUntil | NotGiven = NOT_GIVEN,
+        wait_until: WaitUntil | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> object:
         """
         Post Scrape Page
@@ -302,13 +302,13 @@ class BrowsersResource(SyncAPIResource):
         browser_id: str,
         *,
         url: str,
-        wait_until: WaitUntil | NotGiven = NOT_GIVEN,
+        wait_until: WaitUntil | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BrowserVisitPageResponse:
         """
         Post Visit Page
@@ -376,7 +376,7 @@ class AsyncBrowsersResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> object:
         """List Browsers"""
         return await self._get(
@@ -396,7 +396,7 @@ class AsyncBrowsersResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> object:
         """
         Close Browser
@@ -426,17 +426,17 @@ class AsyncBrowsersResource(AsyncAPIResource):
         *,
         download_url: str,
         s3_bucket: str,
-        aws_access_key_id: Optional[str] | NotGiven = NOT_GIVEN,
-        aws_region: str | NotGiven = NOT_GIVEN,
-        aws_secret_access_key: Optional[str] | NotGiven = NOT_GIVEN,
-        s3_key: Optional[str] | NotGiven = NOT_GIVEN,
-        wait_until: WaitUntil | NotGiven = NOT_GIVEN,
+        aws_access_key_id: Optional[str] | Omit = omit,
+        aws_region: str | Omit = omit,
+        aws_secret_access_key: Optional[str] | Omit = omit,
+        s3_key: Optional[str] | Omit = omit,
+        wait_until: WaitUntil | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BrowserDownloadFileResponse:
         """
         Download a file via browser and upload it to S3.
@@ -481,7 +481,7 @@ class AsyncBrowsersResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BrowserGetMetadataResponse:
         """
         Get Browser Metadata
@@ -508,15 +508,15 @@ class AsyncBrowsersResource(AsyncAPIResource):
     async def launch(
         self,
         *,
-        headless: bool | NotGiven = NOT_GIVEN,
-        track_all_responses: bool | NotGiven = NOT_GIVEN,
-        url: str | NotGiven = NOT_GIVEN,
+        headless: bool | Omit = omit,
+        track_all_responses: bool | Omit = omit,
+        url: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BrowserLaunchResponse:
         """
         Launch Browser
@@ -551,13 +551,13 @@ class AsyncBrowsersResource(AsyncAPIResource):
         browser_id: str,
         *,
         url: str,
-        wait_until: WaitUntil | NotGiven = NOT_GIVEN,
+        wait_until: WaitUntil | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> object:
         """
         Post Scrape Page
@@ -593,13 +593,13 @@ class AsyncBrowsersResource(AsyncAPIResource):
         browser_id: str,
         *,
         url: str,
-        wait_until: WaitUntil | NotGiven = NOT_GIVEN,
+        wait_until: WaitUntil | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BrowserVisitPageResponse:
         """
         Post Visit Page
