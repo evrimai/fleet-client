@@ -7,7 +7,7 @@ from typing import Optional
 import httpx
 
 from ..types import WaitUntil, download_create_job_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -50,17 +50,17 @@ class DownloadResource(SyncAPIResource):
         *,
         download_url: str,
         s3_bucket: str,
-        aws_access_key_id: Optional[str] | NotGiven = NOT_GIVEN,
-        aws_region: str | NotGiven = NOT_GIVEN,
-        aws_secret_access_key: Optional[str] | NotGiven = NOT_GIVEN,
-        s3_key: Optional[str] | NotGiven = NOT_GIVEN,
-        wait_until: WaitUntil | NotGiven = NOT_GIVEN,
+        aws_access_key_id: Optional[str] | Omit = omit,
+        aws_region: str | Omit = omit,
+        aws_secret_access_key: Optional[str] | Omit = omit,
+        s3_key: Optional[str] | Omit = omit,
+        wait_until: WaitUntil | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DownloadCreateJobResponse:
         """
         Create an async download job and return a job ID immediately.
@@ -103,7 +103,7 @@ class DownloadResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DownloadGetJobStatusResponse:
         """
         Get the status and results of an async download job.
@@ -153,17 +153,17 @@ class AsyncDownloadResource(AsyncAPIResource):
         *,
         download_url: str,
         s3_bucket: str,
-        aws_access_key_id: Optional[str] | NotGiven = NOT_GIVEN,
-        aws_region: str | NotGiven = NOT_GIVEN,
-        aws_secret_access_key: Optional[str] | NotGiven = NOT_GIVEN,
-        s3_key: Optional[str] | NotGiven = NOT_GIVEN,
-        wait_until: WaitUntil | NotGiven = NOT_GIVEN,
+        aws_access_key_id: Optional[str] | Omit = omit,
+        aws_region: str | Omit = omit,
+        aws_secret_access_key: Optional[str] | Omit = omit,
+        s3_key: Optional[str] | Omit = omit,
+        wait_until: WaitUntil | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DownloadCreateJobResponse:
         """
         Create an async download job and return a job ID immediately.
@@ -206,7 +206,7 @@ class AsyncDownloadResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DownloadGetJobStatusResponse:
         """
         Get the status and results of an async download job.
