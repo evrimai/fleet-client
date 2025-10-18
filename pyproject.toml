@@ -39,7 +39,7 @@ Homepage = "https://github.com/evrimai/fleet-client"
 Repository = "https://github.com/evrimai/fleet-client"
 
 [project.optional-dependencies]
-aiohttp = ["aiohttp", "httpx_aiohttp>=0.1.8"]
+aiohttp = ["aiohttp", "httpx_aiohttp>=0.1.9"]
 
 [tool.rye]
 managed = true
