@@ -21,7 +21,7 @@ from ._types import (
 )
 from ._utils import is_given, get_async_library
 from ._version import __version__
-from .resources import health, profile, download
+from .resources import health
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import FleetError, APIStatusError
 from ._base_client import (
@@ -29,8 +29,6 @@ from ._base_client import (
     SyncAPIClient,
     AsyncAPIClient,
 )
-from .resources.scrape import scrape
-from .resources.browsers import browsers
 from .resources.workflows import workflows
 
 __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Fleet", "AsyncFleet", "Client", "AsyncClient"]
@@ -38,10 +36,6 @@ __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Fleet", "A
 
 class Fleet(SyncAPIClient):
     health: health.HealthResource
-    browsers: browsers.BrowsersResource
-    scrape: scrape.ScrapeResource
-    profile: profile.ProfileResource
-    download: download.DownloadResource
     workflows: workflows.WorkflowsResource
     with_raw_response: FleetWithRawResponse
     with_streaming_response: FleetWithStreamedResponse
@@ -101,10 +95,6 @@ class Fleet(SyncAPIClient):
         )
 
         self.health = health.HealthResource(self)
-        self.browsers = browsers.BrowsersResource(self)
-        self.scrape = scrape.ScrapeResource(self)
-        self.profile = profile.ProfileResource(self)
-        self.download = download.DownloadResource(self)
         self.workflows = workflows.WorkflowsResource(self)
         self.with_raw_response = FleetWithRawResponse(self)
         self.with_streaming_response = FleetWithStreamedResponse(self)
@@ -216,10 +206,6 @@ class Fleet(SyncAPIClient):
 
 class AsyncFleet(AsyncAPIClient):
     health: health.AsyncHealthResource
-    browsers: browsers.AsyncBrowsersResource
-    scrape: scrape.AsyncScrapeResource
-    profile: profile.AsyncProfileResource
-    download: download.AsyncDownloadResource
     workflows: workflows.AsyncWorkflowsResource
     with_raw_response: AsyncFleetWithRawResponse
     with_streaming_response: AsyncFleetWithStreamedResponse
@@ -279,10 +265,6 @@ class AsyncFleet(AsyncAPIClient):
         )
 
         self.health = health.AsyncHealthResource(self)
-        self.browsers = browsers.AsyncBrowsersResource(self)
-        self.scrape = scrape.AsyncScrapeResource(self)
-        self.profile = profile.AsyncProfileResource(self)
-        self.download = download.AsyncDownloadResource(self)
         self.workflows = workflows.AsyncWorkflowsResource(self)
         self.with_raw_response = AsyncFleetWithRawResponse(self)
         self.with_streaming_response = AsyncFleetWithStreamedResponse(self)
@@ -395,40 +377,24 @@ class AsyncFleet(AsyncAPIClient):
 class FleetWithRawResponse:
     def __init__(self, client: Fleet) -> None:
         self.health = health.HealthResourceWithRawResponse(client.health)
-        self.browsers = browsers.BrowsersResourceWithRawResponse(client.browsers)
-        self.scrape = scrape.ScrapeResourceWithRawResponse(client.scrape)
-        self.profile = profile.ProfileResourceWithRawResponse(client.profile)
-        self.download = download.DownloadResourceWithRawResponse(client.download)
         self.workflows = workflows.WorkflowsResourceWithRawResponse(client.workflows)
 
 
 class AsyncFleetWithRawResponse:
     def __init__(self, client: AsyncFleet) -> None:
         self.health = health.AsyncHealthResourceWithRawResponse(client.health)
-        self.browsers = browsers.AsyncBrowsersResourceWithRawResponse(client.browsers)
-        self.scrape = scrape.AsyncScrapeResourceWithRawResponse(client.scrape)
-        self.profile = profile.AsyncProfileResourceWithRawResponse(client.profile)
-        self.download = download.AsyncDownloadResourceWithRawResponse(client.download)
         self.workflows = workflows.AsyncWorkflowsResourceWithRawResponse(client.workflows)
 
 
 class FleetWithStreamedResponse:
     def __init__(self, client: Fleet) -> None:
         self.health = health.HealthResourceWithStreamingResponse(client.health)
-        self.browsers = browsers.BrowsersResourceWithStreamingResponse(client.browsers)
-        self.scrape = scrape.ScrapeResourceWithStreamingResponse(client.scrape)
-        self.profile = profile.ProfileResourceWithStreamingResponse(client.profile)
-        self.download = download.DownloadResourceWithStreamingResponse(client.download)
         self.workflows = workflows.WorkflowsResourceWithStreamingResponse(client.workflows)
 
 
 class AsyncFleetWithStreamedResponse:
     def __init__(self, client: AsyncFleet) -> None:
         self.health = health.AsyncHealthResourceWithStreamingResponse(client.health)
-        self.browsers = browsers.AsyncBrowsersResourceWithStreamingResponse(client.browsers)
-        self.scrape = scrape.AsyncScrapeResourceWithStreamingResponse(client.scrape)
-        self.profile = profile.AsyncProfileResourceWithStreamingResponse(client.profile)
-        self.download = download.AsyncDownloadResourceWithStreamingResponse(client.download)
         self.workflows = workflows.AsyncWorkflowsResourceWithStreamingResponse(client.workflows)
 
 

@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
+from typing_extensions import Literal
+
 import httpx
 
-from ...types import WaitUntil
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
@@ -17,7 +18,6 @@ from ..._response import (
 )
 from ..._base_client import make_request_options
 from ...types.workflows import request_create_params
-from ...types.wait_until import WaitUntil
 from ...types.workflows.request_create_response import RequestCreateResponse
 
 __all__ = ["RequestResource", "AsyncRequestResource"]
@@ -47,7 +47,10 @@ class RequestResource(SyncAPIResource):
         self,
         *,
         url: str,
-        wait_until: WaitUntil | Omit = omit,
+        camo: bool | Omit = omit,
+        ephemeral_browser: bool | Omit = omit,
+        stealth: bool | Omit = omit,
+        wait_until: Literal["load", "networkidle", "domcontentloaded", "commit"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -72,6 +75,9 @@ class RequestResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "url": url,
+                    "camo": camo,
+                    "ephemeral_browser": ephemeral_browser,
+                    "stealth": stealth,
                     "wait_until": wait_until,
                 },
                 request_create_params.RequestCreateParams,
@@ -107,7 +113,10 @@ class AsyncRequestResource(AsyncAPIResource):
         self,
         *,
         url: str,
-        wait_until: WaitUntil | Omit = omit,
+        camo: bool | Omit = omit,
+        ephemeral_browser: bool | Omit = omit,
+        stealth: bool | Omit = omit,
+        wait_until: Literal["load", "networkidle", "domcontentloaded", "commit"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -132,6 +141,9 @@ class AsyncRequestResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "url": url,
+                    "camo": camo,
+                    "ephemeral_browser": ephemeral_browser,
+                    "stealth": stealth,
                     "wait_until": wait_until,
                 },
                 request_create_params.RequestCreateParams,
