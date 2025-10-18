@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
-from typing_extensions import Literal, Required, TypedDict
+from typing_extensions import Required, TypedDict
+
+from .wait_until import WaitUntil
 
 __all__ = ["RequestCreateParams"]
 
@@ -16,4 +18,4 @@ class RequestCreateParams(TypedDict, total=False):
 
     stealth: bool
 
-    wait_until: Literal["load", "networkidle", "domcontentloaded", "commit"]
+    wait_until: WaitUntil

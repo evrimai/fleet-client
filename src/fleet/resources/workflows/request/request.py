@@ -2,35 +2,46 @@
 
 from __future__ import annotations
 
-from typing_extensions import Literal
-
 import httpx
 
-from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
-from ..._compat import cached_property
-from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import (
+from .mass import (
+    MassResource,
+    AsyncMassResource,
+    MassResourceWithRawResponse,
+    AsyncMassResourceWithRawResponse,
+    MassResourceWithStreamingResponse,
+    AsyncMassResourceWithStreamingResponse,
+)
+from ...._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
+from ...._utils import maybe_transform, async_maybe_transform
+from ...._compat import cached_property
+from ...._resource import SyncAPIResource, AsyncAPIResource
+from ...._response import (
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
-from ...types.workflows import request_create_params
-from ...types.workflows.request_create_response import RequestCreateResponse
+from ...._base_client import make_request_options
+from ....types.workflows import WaitUntil, request_create_params
+from ....types.workflows.wait_until import WaitUntil
+from ....types.workflows.request_create_response import RequestCreateResponse
 
 __all__ = ["RequestResource", "AsyncRequestResource"]
 
 
 class RequestResource(SyncAPIResource):
     @cached_property
+    def mass(self) -> MassResource:
+        return MassResource(self._client)
+
+    @cached_property
     def with_raw_response(self) -> RequestResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/evrimai/fleet-client#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/fleet-python#accessing-raw-response-data-eg-headers
         """
         return RequestResourceWithRawResponse(self)
 
@@ -39,7 +50,7 @@ class RequestResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/evrimai/fleet-client#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/fleet-python#with_streaming_response
         """
         return RequestResourceWithStreamingResponse(self)
 
@@ -50,7 +61,7 @@ class RequestResource(SyncAPIResource):
         camo: bool | Omit = omit,
         ephemeral_browser: bool | Omit = omit,
         stealth: bool | Omit = omit,
-        wait_until: Literal["load", "networkidle", "domcontentloaded", "commit"] | Omit = omit,
+        wait_until: WaitUntil | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -91,12 +102,16 @@ class RequestResource(SyncAPIResource):
 
 class AsyncRequestResource(AsyncAPIResource):
     @cached_property
+    def mass(self) -> AsyncMassResource:
+        return AsyncMassResource(self._client)
+
+    @cached_property
     def with_raw_response(self) -> AsyncRequestResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/evrimai/fleet-client#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/fleet-python#accessing-raw-response-data-eg-headers
         """
         return AsyncRequestResourceWithRawResponse(self)
 
@@ -105,7 +120,7 @@ class AsyncRequestResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/evrimai/fleet-client#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/fleet-python#with_streaming_response
         """
         return AsyncRequestResourceWithStreamingResponse(self)
 
@@ -116,7 +131,7 @@ class AsyncRequestResource(AsyncAPIResource):
         camo: bool | Omit = omit,
         ephemeral_browser: bool | Omit = omit,
         stealth: bool | Omit = omit,
-        wait_until: Literal["load", "networkidle", "domcontentloaded", "commit"] | Omit = omit,
+        wait_until: WaitUntil | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -163,6 +178,10 @@ class RequestResourceWithRawResponse:
             request.create,
         )
 
+    @cached_property
+    def mass(self) -> MassResourceWithRawResponse:
+        return MassResourceWithRawResponse(self._request.mass)
+
 
 class AsyncRequestResourceWithRawResponse:
     def __init__(self, request: AsyncRequestResource) -> None:
@@ -171,6 +190,10 @@ class AsyncRequestResourceWithRawResponse:
         self.create = async_to_raw_response_wrapper(
             request.create,
         )
+
+    @cached_property
+    def mass(self) -> AsyncMassResourceWithRawResponse:
+        return AsyncMassResourceWithRawResponse(self._request.mass)
 
 
 class RequestResourceWithStreamingResponse:
@@ -181,6 +204,10 @@ class RequestResourceWithStreamingResponse:
             request.create,
         )
 
+    @cached_property
+    def mass(self) -> MassResourceWithStreamingResponse:
+        return MassResourceWithStreamingResponse(self._request.mass)
+
 
 class AsyncRequestResourceWithStreamingResponse:
     def __init__(self, request: AsyncRequestResource) -> None:
@@ -189,3 +216,7 @@ class AsyncRequestResourceWithStreamingResponse:
         self.create = async_to_streamed_response_wrapper(
             request.create,
         )
+
+    @cached_property
+    def mass(self) -> AsyncMassResourceWithStreamingResponse:
+        return AsyncMassResourceWithStreamingResponse(self._request.mass)

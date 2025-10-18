@@ -3,6 +3,6 @@
 from typing import Dict
 from typing_extensions import TypeAlias
 
-__all__ = ["WorkflowGetResultsResponse"]
+__all__ = ["PageGetTextResponse"]
 
-WorkflowGetResultsResponse: TypeAlias = Dict[str, object]
+PageGetTextResponse: TypeAlias = Dict[str, str]

@@ -1,5 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from .vnc import (
+    VncResource,
+    AsyncVncResource,
+    VncResourceWithRawResponse,
+    AsyncVncResourceWithRawResponse,
+    VncResourceWithStreamingResponse,
+    AsyncVncResourceWithStreamingResponse,
+)
 from .health import (
     HealthResource,
     AsyncHealthResource,
@@ -7,6 +15,14 @@ from .health import (
     AsyncHealthResourceWithRawResponse,
     HealthResourceWithStreamingResponse,
     AsyncHealthResourceWithStreamingResponse,
+)
+from .sessions import (
+    SessionsResource,
+    AsyncSessionsResource,
+    SessionsResourceWithRawResponse,
+    AsyncSessionsResourceWithRawResponse,
+    SessionsResourceWithStreamingResponse,
+    AsyncSessionsResourceWithStreamingResponse,
 )
 from .workflows import (
     WorkflowsResource,
@@ -30,4 +46,16 @@ __all__ = [
     "AsyncWorkflowsResourceWithRawResponse",
     "WorkflowsResourceWithStreamingResponse",
     "AsyncWorkflowsResourceWithStreamingResponse",
+    "VncResource",
+    "AsyncVncResource",
+    "VncResourceWithRawResponse",
+    "AsyncVncResourceWithRawResponse",
+    "VncResourceWithStreamingResponse",
+    "AsyncVncResourceWithStreamingResponse",
+    "SessionsResource",
+    "AsyncSessionsResource",
+    "SessionsResourceWithRawResponse",
+    "AsyncSessionsResourceWithRawResponse",
+    "SessionsResourceWithStreamingResponse",
+    "AsyncSessionsResourceWithStreamingResponse",
 ]

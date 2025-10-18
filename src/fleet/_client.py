@@ -29,6 +29,8 @@ from ._base_client import (
     SyncAPIClient,
     AsyncAPIClient,
 )
+from .resources.vnc import vnc
+from .resources.sessions import sessions
 from .resources.workflows import workflows
 
 __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Fleet", "AsyncFleet", "Client", "AsyncClient"]
@@ -37,6 +39,8 @@ __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Fleet", "A
 class Fleet(SyncAPIClient):
     health: health.HealthResource
     workflows: workflows.WorkflowsResource
+    vnc: vnc.VncResource
+    sessions: sessions.SessionsResource
     with_raw_response: FleetWithRawResponse
     with_streaming_response: FleetWithStreamedResponse
 
@@ -96,6 +100,8 @@ class Fleet(SyncAPIClient):
 
         self.health = health.HealthResource(self)
         self.workflows = workflows.WorkflowsResource(self)
+        self.vnc = vnc.VncResource(self)
+        self.sessions = sessions.SessionsResource(self)
         self.with_raw_response = FleetWithRawResponse(self)
         self.with_streaming_response = FleetWithStreamedResponse(self)
 
@@ -207,6 +213,8 @@ class Fleet(SyncAPIClient):
 class AsyncFleet(AsyncAPIClient):
     health: health.AsyncHealthResource
     workflows: workflows.AsyncWorkflowsResource
+    vnc: vnc.AsyncVncResource
+    sessions: sessions.AsyncSessionsResource
     with_raw_response: AsyncFleetWithRawResponse
     with_streaming_response: AsyncFleetWithStreamedResponse
 
@@ -266,6 +274,8 @@ class AsyncFleet(AsyncAPIClient):
 
         self.health = health.AsyncHealthResource(self)
         self.workflows = workflows.AsyncWorkflowsResource(self)
+        self.vnc = vnc.AsyncVncResource(self)
+        self.sessions = sessions.AsyncSessionsResource(self)
         self.with_raw_response = AsyncFleetWithRawResponse(self)
         self.with_streaming_response = AsyncFleetWithStreamedResponse(self)
 
@@ -378,24 +388,32 @@ class FleetWithRawResponse:
     def __init__(self, client: Fleet) -> None:
         self.health = health.HealthResourceWithRawResponse(client.health)
         self.workflows = workflows.WorkflowsResourceWithRawResponse(client.workflows)
+        self.vnc = vnc.VncResourceWithRawResponse(client.vnc)
+        self.sessions = sessions.SessionsResourceWithRawResponse(client.sessions)
 
 
 class AsyncFleetWithRawResponse:
     def __init__(self, client: AsyncFleet) -> None:
         self.health = health.AsyncHealthResourceWithRawResponse(client.health)
         self.workflows = workflows.AsyncWorkflowsResourceWithRawResponse(client.workflows)
+        self.vnc = vnc.AsyncVncResourceWithRawResponse(client.vnc)
+        self.sessions = sessions.AsyncSessionsResourceWithRawResponse(client.sessions)
 
 
 class FleetWithStreamedResponse:
     def __init__(self, client: Fleet) -> None:
         self.health = health.HealthResourceWithStreamingResponse(client.health)
         self.workflows = workflows.WorkflowsResourceWithStreamingResponse(client.workflows)
+        self.vnc = vnc.VncResourceWithStreamingResponse(client.vnc)
+        self.sessions = sessions.SessionsResourceWithStreamingResponse(client.sessions)
 
 
 class AsyncFleetWithStreamedResponse:
     def __init__(self, client: AsyncFleet) -> None:
         self.health = health.AsyncHealthResourceWithStreamingResponse(client.health)
         self.workflows = workflows.AsyncWorkflowsResourceWithStreamingResponse(client.workflows)
+        self.vnc = vnc.AsyncVncResourceWithStreamingResponse(client.vnc)
+        self.sessions = sessions.AsyncSessionsResourceWithStreamingResponse(client.sessions)
 
 
 Client = Fleet
