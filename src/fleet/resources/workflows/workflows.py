@@ -4,14 +4,6 @@ from __future__ import annotations
 
 import httpx
 
-from .request import (
-    RequestResource,
-    AsyncRequestResource,
-    RequestResourceWithRawResponse,
-    AsyncRequestResourceWithRawResponse,
-    RequestResourceWithStreamingResponse,
-    AsyncRequestResourceWithStreamingResponse,
-)
 from ..._types import Body, Query, Headers, NotGiven, not_given
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -22,8 +14,16 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
+from .request.request import (
+    RequestResource,
+    AsyncRequestResource,
+    RequestResourceWithRawResponse,
+    AsyncRequestResourceWithRawResponse,
+    RequestResourceWithStreamingResponse,
+    AsyncRequestResourceWithStreamingResponse,
+)
+from ...types.workflow_results_response import WorkflowResultsResponse
 from ...types.workflow_describe_response import WorkflowDescribeResponse
-from ...types.workflow_get_results_response import WorkflowGetResultsResponse
 
 __all__ = ["WorkflowsResource", "AsyncWorkflowsResource"]
 
@@ -39,7 +39,7 @@ class WorkflowsResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/evrimai/fleet-client#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/evrimai/fleet#accessing-raw-response-data-eg-headers
         """
         return WorkflowsResourceWithRawResponse(self)
 
@@ -48,7 +48,7 @@ class WorkflowsResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/evrimai/fleet-client#with_streaming_response
+        For more information, see https://www.github.com/evrimai/fleet#with_streaming_response
         """
         return WorkflowsResourceWithStreamingResponse(self)
 
@@ -85,7 +85,7 @@ class WorkflowsResource(SyncAPIResource):
             cast_to=WorkflowDescribeResponse,
         )
 
-    def get_results(
+    def results(
         self,
         workflow_id: str,
         *,
@@ -95,7 +95,7 @@ class WorkflowsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> WorkflowGetResultsResponse:
+    ) -> WorkflowResultsResponse:
         """
         Get Workflow Results
 
@@ -115,7 +115,7 @@ class WorkflowsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=WorkflowGetResultsResponse,
+            cast_to=WorkflowResultsResponse,
         )
 
 
@@ -130,7 +130,7 @@ class AsyncWorkflowsResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/evrimai/fleet-client#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/evrimai/fleet#accessing-raw-response-data-eg-headers
         """
         return AsyncWorkflowsResourceWithRawResponse(self)
 
@@ -139,7 +139,7 @@ class AsyncWorkflowsResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/evrimai/fleet-client#with_streaming_response
+        For more information, see https://www.github.com/evrimai/fleet#with_streaming_response
         """
         return AsyncWorkflowsResourceWithStreamingResponse(self)
 
@@ -176,7 +176,7 @@ class AsyncWorkflowsResource(AsyncAPIResource):
             cast_to=WorkflowDescribeResponse,
         )
 
-    async def get_results(
+    async def results(
         self,
         workflow_id: str,
         *,
@@ -186,7 +186,7 @@ class AsyncWorkflowsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> WorkflowGetResultsResponse:
+    ) -> WorkflowResultsResponse:
         """
         Get Workflow Results
 
@@ -206,7 +206,7 @@ class AsyncWorkflowsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=WorkflowGetResultsResponse,
+            cast_to=WorkflowResultsResponse,
         )
 
 
@@ -217,8 +217,8 @@ class WorkflowsResourceWithRawResponse:
         self.describe = to_raw_response_wrapper(
             workflows.describe,
         )
-        self.get_results = to_raw_response_wrapper(
-            workflows.get_results,
+        self.results = to_raw_response_wrapper(
+            workflows.results,
         )
 
     @cached_property
@@ -233,8 +233,8 @@ class AsyncWorkflowsResourceWithRawResponse:
         self.describe = async_to_raw_response_wrapper(
             workflows.describe,
         )
-        self.get_results = async_to_raw_response_wrapper(
-            workflows.get_results,
+        self.results = async_to_raw_response_wrapper(
+            workflows.results,
         )
 
     @cached_property
@@ -249,8 +249,8 @@ class WorkflowsResourceWithStreamingResponse:
         self.describe = to_streamed_response_wrapper(
             workflows.describe,
         )
-        self.get_results = to_streamed_response_wrapper(
-            workflows.get_results,
+        self.results = to_streamed_response_wrapper(
+            workflows.results,
         )
 
     @cached_property
@@ -265,8 +265,8 @@ class AsyncWorkflowsResourceWithStreamingResponse:
         self.describe = async_to_streamed_response_wrapper(
             workflows.describe,
         )
-        self.get_results = async_to_streamed_response_wrapper(
-            workflows.get_results,
+        self.results = async_to_streamed_response_wrapper(
+            workflows.results,
         )
 
     @cached_property
