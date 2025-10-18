@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.2 (2025-10-18)
+
+Full Changelog: [v0.2.1...v0.2.2](https://github.com/evrimai/fleet-client/compare/v0.2.1...v0.2.2)
+
+### Chores
+
+* sync repo ([29846d9](https://github.com/evrimai/fleet-client/commit/29846d9a1daeafb06856842be735ce3d2431445d))
+* update SDK settings ([c115c3e](https://github.com/evrimai/fleet-client/commit/c115c3e4a83059d7df3cf24a79e410a7bbd20b36))
+* update SDK settings ([1d925fe](https://github.com/evrimai/fleet-client/commit/1d925fe2b09a44b1264df8fc468a45abdf486d11))
+
 ## 0.2.1 (2025-10-18)
 
 Full Changelog: [v0.2.0...v0.2.1](https://github.com/evrimai/fleet-client/compare/v0.2.0...v0.2.1)
