@@ -30,6 +30,9 @@ class TestRequest:
     def test_method_create_with_all_params(self, client: Fleet) -> None:
         request = client.workflows.request.create(
             url="url",
+            camo=True,
+            ephemeral_browser=True,
+            stealth=True,
             wait_until="load",
         )
         assert_matches_type(RequestCreateResponse, request, path=["response"])
@@ -79,6 +82,9 @@ class TestAsyncRequest:
     async def test_method_create_with_all_params(self, async_client: AsyncFleet) -> None:
         request = await async_client.workflows.request.create(
             url="url",
+            camo=True,
+            ephemeral_browser=True,
+            stealth=True,
             wait_until="load",
         )
         assert_matches_type(RequestCreateResponse, request, path=["response"])

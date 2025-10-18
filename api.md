@@ -4,53 +4,130 @@ Methods:
 
 - <code title="get /health/">client.health.<a href="./src/fleet/resources/health.py">check</a>() -> object</code>
 
-# Browsers
+# Workflows
+
+Types:
+
+```python
+from fleet.types import WorkflowDescribeResponse, WorkflowResultsResponse
+```
+
+Methods:
+
+- <code title="get /workflows/describe/{workflow_id}">client.workflows.<a href="./src/fleet/resources/workflows/workflows.py">describe</a>(workflow_id) -> <a href="./src/fleet/types/workflow_describe_response.py">WorkflowDescribeResponse</a></code>
+- <code title="get /workflows/results/{workflow_id}">client.workflows.<a href="./src/fleet/resources/workflows/workflows.py">results</a>(workflow_id) -> <a href="./src/fleet/types/workflow_results_response.py">WorkflowResultsResponse</a></code>
+
+## Request
+
+Types:
+
+```python
+from fleet.types.workflows import WaitUntil, RequestCreateResponse
+```
+
+Methods:
+
+- <code title="post /workflows/request/scrape">client.workflows.request.<a href="./src/fleet/resources/workflows/request/request.py">create</a>(\*\*<a href="src/fleet/types/workflows/request_create_params.py">params</a>) -> <a href="./src/fleet/types/workflows/request_create_response.py">RequestCreateResponse</a></code>
+
+### Mass
+
+Types:
+
+```python
+from fleet.types.workflows.request import WorkflowResultWithMessage
+```
+
+Methods:
+
+- <code title="post /workflows/request/mass/company-scrape">client.workflows.request.mass.<a href="./src/fleet/resources/workflows/request/mass.py">create_company_scrape</a>(\*\*<a href="src/fleet/types/workflows/request/mass_create_company_scrape_params.py">params</a>) -> <a href="./src/fleet/types/workflows/request/workflow_result_with_message.py">WorkflowResultWithMessage</a></code>
+- <code title="post /workflows/request/mass/link-extraction">client.workflows.request.mass.<a href="./src/fleet/resources/workflows/request/mass.py">create_link_extraction</a>(\*\*<a href="src/fleet/types/workflows/request/mass_create_link_extraction_params.py">params</a>) -> <a href="./src/fleet/types/workflows/request/workflow_result_with_message.py">WorkflowResultWithMessage</a></code>
+
+# Vnc
+
+Methods:
+
+- <code title="get /vnc/health">client.vnc.<a href="./src/fleet/resources/vnc/vnc.py">check_health</a>() -> object</code>
+
+## Sessions
+
+Types:
+
+```python
+from fleet.types.vnc import VncSession, SessionRetrieveResponse, SessionListResponse
+```
+
+Methods:
+
+- <code title="get /vnc/sessions/{browser_id}">client.vnc.sessions.<a href="./src/fleet/resources/vnc/sessions.py">retrieve</a>(browser_id) -> <a href="./src/fleet/types/vnc/session_retrieve_response.py">SessionRetrieveResponse</a></code>
+- <code title="get /vnc/sessions">client.vnc.sessions.<a href="./src/fleet/resources/vnc/sessions.py">list</a>(\*\*<a href="src/fleet/types/vnc/session_list_params.py">params</a>) -> <a href="./src/fleet/types/vnc/session_list_response.py">SessionListResponse</a></code>
+- <code title="get /vnc/sessions/{browser_id}/raw">client.vnc.sessions.<a href="./src/fleet/resources/vnc/sessions.py">retrieve_raw</a>(browser_id) -> <a href="./src/fleet/types/vnc/vnc_session.py">VncSession</a></code>
+
+## Discovery
+
+Methods:
+
+- <code title="post /vnc/discovery/trigger">client.vnc.discovery.<a href="./src/fleet/resources/vnc/discovery.py">trigger</a>() -> object</code>
+
+# Sessions
 
 Types:
 
 ```python
 from fleet.types import (
-    VisitRequest,
-    WaitUntil,
-    BrowserDownloadFileResponse,
-    BrowserGetMetadataResponse,
-    BrowserLaunchResponse,
-    BrowserVisitPageResponse,
+    SessionParameters,
+    SessionCreateResponse,
+    SessionRetrieveResponse,
+    SessionListResponse,
+    SessionDeleteResponse,
+    SessionVisitPageResponse,
+    SessionWarmUpResponse,
 )
 ```
 
 Methods:
 
-- <code title="get /browsers/">client.browsers.<a href="./src/fleet/resources/browsers/browsers.py">list</a>() -> object</code>
-- <code title="delete /browsers/{browser_id}">client.browsers.<a href="./src/fleet/resources/browsers/browsers.py">close</a>(browser_id) -> object</code>
-- <code title="post /browsers/{browser_id}/download">client.browsers.<a href="./src/fleet/resources/browsers/browsers.py">download_file</a>(browser_id, \*\*<a href="src/fleet/types/browser_download_file_params.py">params</a>) -> <a href="./src/fleet/types/browser_download_file_response.py">BrowserDownloadFileResponse</a></code>
-- <code title="get /browsers/{browser_id}/metadata">client.browsers.<a href="./src/fleet/resources/browsers/browsers.py">get_metadata</a>(browser_id) -> <a href="./src/fleet/types/browser_get_metadata_response.py">BrowserGetMetadataResponse</a></code>
-- <code title="post /browsers/">client.browsers.<a href="./src/fleet/resources/browsers/browsers.py">launch</a>(\*\*<a href="src/fleet/types/browser_launch_params.py">params</a>) -> <a href="./src/fleet/types/browser_launch_response.py">BrowserLaunchResponse</a></code>
-- <code title="post /browsers/{browser_id}/scrape">client.browsers.<a href="./src/fleet/resources/browsers/browsers.py">scrape_page</a>(browser_id, \*\*<a href="src/fleet/types/browser_scrape_page_params.py">params</a>) -> object</code>
-- <code title="post /browsers/{browser_id}/visit">client.browsers.<a href="./src/fleet/resources/browsers/browsers.py">visit_page</a>(browser_id, \*\*<a href="src/fleet/types/browser_visit_page_params.py">params</a>) -> <a href="./src/fleet/types/browser_visit_page_response.py">BrowserVisitPageResponse</a></code>
+- <code title="post /sessions/">client.sessions.<a href="./src/fleet/resources/sessions/sessions.py">create</a>(\*\*<a href="src/fleet/types/session_create_params.py">params</a>) -> <a href="./src/fleet/types/session_create_response.py">SessionCreateResponse</a></code>
+- <code title="get /sessions/{session_id}">client.sessions.<a href="./src/fleet/resources/sessions/sessions.py">retrieve</a>(session_id) -> <a href="./src/fleet/types/session_retrieve_response.py">SessionRetrieveResponse</a></code>
+- <code title="get /sessions/">client.sessions.<a href="./src/fleet/resources/sessions/sessions.py">list</a>() -> <a href="./src/fleet/types/session_list_response.py">SessionListResponse</a></code>
+- <code title="delete /sessions/{session_id}">client.sessions.<a href="./src/fleet/resources/sessions/sessions.py">delete</a>(session_id) -> <a href="./src/fleet/types/session_delete_response.py">SessionDeleteResponse</a></code>
+- <code title="post /sessions/{session_id}/visit">client.sessions.<a href="./src/fleet/resources/sessions/sessions.py">visit_page</a>(session_id, \*\*<a href="src/fleet/types/session_visit_page_params.py">params</a>) -> <a href="./src/fleet/types/session_visit_page_response.py">SessionVisitPageResponse</a></code>
+- <code title="post /sessions/warm-up">client.sessions.<a href="./src/fleet/resources/sessions/sessions.py">warm_up</a>() -> <a href="./src/fleet/types/session_warm_up_response.py">SessionWarmUpResponse</a></code>
+
+## Start
+
+Types:
+
+```python
+from fleet.types.sessions import StartExistingResponse, StartNewResponse
+```
+
+Methods:
+
+- <code title="post /sessions/{session_id}/start">client.sessions.start.<a href="./src/fleet/resources/sessions/start.py">existing</a>(session_id, \*\*<a href="src/fleet/types/sessions/start_existing_params.py">params</a>) -> <a href="./src/fleet/types/sessions/start_existing_response.py">StartExistingResponse</a></code>
+- <code title="post /sessions/start">client.sessions.start.<a href="./src/fleet/resources/sessions/start.py">new</a>(\*\*<a href="src/fleet/types/sessions/start_new_params.py">params</a>) -> <a href="./src/fleet/types/sessions/start_new_response.py">StartNewResponse</a></code>
 
 ## Page
 
 Types:
 
 ```python
-from fleet.types.browsers import PageGetResponse, PageGetFullResponse, PageGetTextResponse
+from fleet.types.sessions import PageGetResponse, PageGetFullResponse, PageGetTextResponse
 ```
 
 Methods:
 
-- <code title="get /browsers/{browser_id}/page">client.browsers.page.<a href="./src/fleet/resources/browsers/page.py">get</a>(browser_id) -> <a href="./src/fleet/types/browsers/page_get_response.py">PageGetResponse</a></code>
-- <code title="get /browsers/{browser_id}/page/full">client.browsers.page.<a href="./src/fleet/resources/browsers/page.py">get_full</a>(browser_id) -> <a href="./src/fleet/types/browsers/page_get_full_response.py">PageGetFullResponse</a></code>
-- <code title="get /browsers/{browser_id}/page/text">client.browsers.page.<a href="./src/fleet/resources/browsers/page.py">get_text</a>(browser_id) -> <a href="./src/fleet/types/browsers/page_get_text_response.py">PageGetTextResponse</a></code>
+- <code title="get /sessions/{session_id}/page">client.sessions.page.<a href="./src/fleet/resources/sessions/page.py">get</a>(session_id) -> <a href="./src/fleet/types/sessions/page_get_response.py">PageGetResponse</a></code>
+- <code title="get /sessions/{session_id}/page/full">client.sessions.page.<a href="./src/fleet/resources/sessions/page.py">get_full</a>(session_id) -> <a href="./src/fleet/types/sessions/page_get_full_response.py">PageGetFullResponse</a></code>
+- <code title="get /sessions/{session_id}/page/text">client.sessions.page.<a href="./src/fleet/resources/sessions/page.py">get_text</a>(session_id) -> <a href="./src/fleet/types/sessions/page_get_text_response.py">PageGetTextResponse</a></code>
 
 ## Responses
 
 Types:
 
 ```python
-from fleet.types.browsers import (
+from fleet.types.sessions import (
+    ResponseListResponse,
     ResponseClearResponse,
-    ResponseGetAllResponse,
     ResponseGetFilteredResponse,
     ResponseGetLatestResponse,
     ResponseGetSummaryResponse,
@@ -60,120 +137,62 @@ from fleet.types.browsers import (
 
 Methods:
 
-- <code title="delete /browsers/{browser_id}/responses">client.browsers.responses.<a href="./src/fleet/resources/browsers/responses.py">clear</a>(browser_id) -> <a href="./src/fleet/types/browsers/response_clear_response.py">ResponseClearResponse</a></code>
-- <code title="get /browsers/{browser_id}/responses">client.browsers.responses.<a href="./src/fleet/resources/browsers/responses.py">get_all</a>(browser_id) -> <a href="./src/fleet/types/browsers/response_get_all_response.py">ResponseGetAllResponse</a></code>
-- <code title="get /browsers/{browser_id}/responses/filter">client.browsers.responses.<a href="./src/fleet/resources/browsers/responses.py">get_filtered</a>(browser_id, \*\*<a href="src/fleet/types/browsers/response_get_filtered_params.py">params</a>) -> <a href="./src/fleet/types/browsers/response_get_filtered_response.py">ResponseGetFilteredResponse</a></code>
-- <code title="get /browsers/{browser_id}/responses/latest">client.browsers.responses.<a href="./src/fleet/resources/browsers/responses.py">get_latest</a>(browser_id) -> <a href="./src/fleet/types/browsers/response_get_latest_response.py">ResponseGetLatestResponse</a></code>
-- <code title="get /browsers/{browser_id}/responses/summary">client.browsers.responses.<a href="./src/fleet/resources/browsers/responses.py">get_summary</a>(browser_id) -> <a href="./src/fleet/types/browsers/response_get_summary_response.py">ResponseGetSummaryResponse</a></code>
-- <code title="post /browsers/{browser_id}/responses/toggle">client.browsers.responses.<a href="./src/fleet/resources/browsers/responses.py">toggle_tracking</a>(browser_id, \*\*<a href="src/fleet/types/browsers/response_toggle_tracking_params.py">params</a>) -> <a href="./src/fleet/types/browsers/response_toggle_tracking_response.py">ResponseToggleTrackingResponse</a></code>
+- <code title="get /sessions/{session_id}/responses">client.sessions.responses.<a href="./src/fleet/resources/sessions/responses.py">list</a>(session_id) -> <a href="./src/fleet/types/sessions/response_list_response.py">ResponseListResponse</a></code>
+- <code title="delete /sessions/{session_id}/responses">client.sessions.responses.<a href="./src/fleet/resources/sessions/responses.py">clear</a>(session_id) -> <a href="./src/fleet/types/sessions/response_clear_response.py">ResponseClearResponse</a></code>
+- <code title="get /sessions/{session_id}/responses/filter">client.sessions.responses.<a href="./src/fleet/resources/sessions/responses.py">get_filtered</a>(session_id, \*\*<a href="src/fleet/types/sessions/response_get_filtered_params.py">params</a>) -> <a href="./src/fleet/types/sessions/response_get_filtered_response.py">ResponseGetFilteredResponse</a></code>
+- <code title="get /sessions/{session_id}/responses/latest">client.sessions.responses.<a href="./src/fleet/resources/sessions/responses.py">get_latest</a>(session_id) -> <a href="./src/fleet/types/sessions/response_get_latest_response.py">ResponseGetLatestResponse</a></code>
+- <code title="get /sessions/{session_id}/responses/summary">client.sessions.responses.<a href="./src/fleet/resources/sessions/responses.py">get_summary</a>(session_id) -> <a href="./src/fleet/types/sessions/response_get_summary_response.py">ResponseGetSummaryResponse</a></code>
+- <code title="post /sessions/{session_id}/responses/toggle">client.sessions.responses.<a href="./src/fleet/resources/sessions/responses.py">toggle_tracking</a>(session_id, \*\*<a href="src/fleet/types/sessions/response_toggle_tracking_params.py">params</a>) -> <a href="./src/fleet/types/sessions/response_toggle_tracking_response.py">ResponseToggleTrackingResponse</a></code>
 
-# Scrape
+## Scrape
 
 Types:
 
 ```python
-from fleet.types import (
+from fleet.types.sessions import (
     BrowserSelectionStrategy,
-    ScrapeCleanupResponse,
+    VisitRequest,
+    ScrapeCleanupJobsResponse,
     ScrapeGetBrowserStatsResponse,
 )
 ```
 
 Methods:
 
-- <code title="post /scrape/cleanup">client.scrape.<a href="./src/fleet/resources/scrape/scrape.py">cleanup</a>(\*\*<a href="src/fleet/types/scrape_cleanup_params.py">params</a>) -> <a href="./src/fleet/types/scrape_cleanup_response.py">ScrapeCleanupResponse</a></code>
-- <code title="get /scrape/browser-stats">client.scrape.<a href="./src/fleet/resources/scrape/scrape.py">get_browser_stats</a>() -> <a href="./src/fleet/types/scrape_get_browser_stats_response.py">ScrapeGetBrowserStatsResponse</a></code>
+- <code title="post /sessions/{session_id}/scrape/cleanup">client.sessions.scrape.<a href="./src/fleet/resources/sessions/scrape/scrape.py">cleanup_jobs</a>(session_id, \*\*<a href="src/fleet/types/sessions/scrape_cleanup_jobs_params.py">params</a>) -> <a href="./src/fleet/types/sessions/scrape_cleanup_jobs_response.py">ScrapeCleanupJobsResponse</a></code>
+- <code title="get /sessions/{session_id}/scrape/browser-stats">client.sessions.scrape.<a href="./src/fleet/resources/sessions/scrape/scrape.py">get_browser_stats</a>(session_id) -> <a href="./src/fleet/types/sessions/scrape_get_browser_stats_response.py">ScrapeGetBrowserStatsResponse</a></code>
+- <code title="post /sessions/{session_id}/scrape">client.sessions.scrape.<a href="./src/fleet/resources/sessions/scrape/scrape.py">page</a>(session_id, \*\*<a href="src/fleet/types/sessions/scrape_page_params.py">params</a>) -> object</code>
 
-## Async
+### Async
 
 Types:
 
 ```python
-from fleet.types.scrape import (
-    AsyncScrapeRequest,
+from fleet.types.sessions.scrape import (
     JobStatus,
-    AsyncCreateResponse,
-    AsyncRetrieveResponse,
-    AsyncListResponse,
-    AsyncDeleteResponse,
+    AsyncCreateJobResponse,
+    AsyncDeleteJobResponse,
+    AsyncGetJobStatusResponse,
+    AsyncListJobsResponse,
 )
 ```
 
 Methods:
 
-- <code title="post /scrape/async">client.scrape.async*.<a href="./src/fleet/resources/scrape/async*.py">create</a>(\*\*<a href="src/fleet/types/scrape/async_create_params.py">params</a>) -> <a href="./src/fleet/types/scrape/async_create_response.py">AsyncCreateResponse</a></code>
-- <code title="get /scrape/async/{job_id}">client.scrape.async*.<a href="./src/fleet/resources/scrape/async*.py">retrieve</a>(job_id) -> <a href="./src/fleet/types/scrape/async_retrieve_response.py">AsyncRetrieveResponse</a></code>
-- <code title="get /scrape/async">client.scrape.async*.<a href="./src/fleet/resources/scrape/async*.py">list</a>() -> <a href="./src/fleet/types/scrape/async_list_response.py">AsyncListResponse</a></code>
-- <code title="delete /scrape/async/{job_id}">client.scrape.async*.<a href="./src/fleet/resources/scrape/async*.py">delete</a>(job_id) -> <a href="./src/fleet/types/scrape/async_delete_response.py">AsyncDeleteResponse</a></code>
+- <code title="post /sessions/{session_id}/scrape/async">client.sessions.scrape.async*.<a href="./src/fleet/resources/sessions/scrape/async*.py">create_job</a>(session_id, \*\*<a href="src/fleet/types/sessions/scrape/async_create_job_params.py">params</a>) -> <a href="./src/fleet/types/sessions/scrape/async_create_job_response.py">AsyncCreateJobResponse</a></code>
+- <code title="delete /sessions/{session_id}/scrape/async/{job_id}">client.sessions.scrape.async*.<a href="./src/fleet/resources/sessions/scrape/async*.py">delete_job</a>(job_id, \*, session_id) -> <a href="./src/fleet/types/sessions/scrape/async_delete_job_response.py">AsyncDeleteJobResponse</a></code>
+- <code title="get /sessions/{session_id}/scrape/async/{job_id}">client.sessions.scrape.async*.<a href="./src/fleet/resources/sessions/scrape/async*.py">get_job_status</a>(job_id, \*, session_id) -> <a href="./src/fleet/types/sessions/scrape/async_get_job_status_response.py">AsyncGetJobStatusResponse</a></code>
+- <code title="get /sessions/{session_id}/scrape/async">client.sessions.scrape.async*.<a href="./src/fleet/resources/sessions/scrape/async*.py">list_jobs</a>(session_id) -> <a href="./src/fleet/types/sessions/scrape/async_list_jobs_response.py">AsyncListJobsResponse</a></code>
 
-## BrowserStrategy
-
-Types:
-
-```python
-from fleet.types.scrape import BrowserStrategyResponse
-```
-
-Methods:
-
-- <code title="get /scrape/browser-strategy">client.scrape.browser_strategy.<a href="./src/fleet/resources/scrape/browser_strategy.py">retrieve</a>() -> <a href="./src/fleet/types/scrape/browser_strategy_response.py">BrowserStrategyResponse</a></code>
-- <code title="post /scrape/browser-strategy">client.scrape.browser_strategy.<a href="./src/fleet/resources/scrape/browser_strategy.py">update</a>(\*\*<a href="src/fleet/types/scrape/browser_strategy_update_params.py">params</a>) -> <a href="./src/fleet/types/scrape/browser_strategy_response.py">BrowserStrategyResponse</a></code>
-
-# Profile
+### BrowserStrategy
 
 Types:
 
 ```python
-from fleet.types import (
-    NetworkCookie,
-    NetworkRequestEvent,
-    NetworkRequestFailedEvent,
-    NetworkRequestFinishedEvent,
-    NetworkResponseEvent,
-    ProfileCaptureResponse,
-    ProfileRunAgentResponse,
-)
+from fleet.types.sessions.scrape import Response
 ```
 
 Methods:
 
-- <code title="post /profile/capture">client.profile.<a href="./src/fleet/resources/profile.py">capture</a>(\*\*<a href="src/fleet/types/profile_capture_params.py">params</a>) -> <a href="./src/fleet/types/profile_capture_response.py">ProfileCaptureResponse</a></code>
-- <code title="post /profile/agent">client.profile.<a href="./src/fleet/resources/profile.py">run_agent</a>(\*\*<a href="src/fleet/types/profile_run_agent_params.py">params</a>) -> <a href="./src/fleet/types/profile_run_agent_response.py">ProfileRunAgentResponse</a></code>
-
-# Download
-
-Types:
-
-```python
-from fleet.types import DownloadCreateJobResponse, DownloadGetJobStatusResponse
-```
-
-Methods:
-
-- <code title="post /download">client.download.<a href="./src/fleet/resources/download.py">create_job</a>(\*\*<a href="src/fleet/types/download_create_job_params.py">params</a>) -> <a href="./src/fleet/types/download_create_job_response.py">DownloadCreateJobResponse</a></code>
-- <code title="get /download/{job_id}">client.download.<a href="./src/fleet/resources/download.py">get_job_status</a>(job_id) -> <a href="./src/fleet/types/download_get_job_status_response.py">DownloadGetJobStatusResponse</a></code>
-
-# Workflows
-
-Types:
-
-```python
-from fleet.types import WorkflowDescribeResponse, WorkflowGetResultsResponse
-```
-
-Methods:
-
-- <code title="get /workflows/describe/{workflow_id}">client.workflows.<a href="./src/fleet/resources/workflows/workflows.py">describe</a>(workflow_id) -> <a href="./src/fleet/types/workflow_describe_response.py">WorkflowDescribeResponse</a></code>
-- <code title="get /workflows/results/{workflow_id}">client.workflows.<a href="./src/fleet/resources/workflows/workflows.py">get_results</a>(workflow_id) -> <a href="./src/fleet/types/workflow_get_results_response.py">WorkflowGetResultsResponse</a></code>
-
-## Request
-
-Types:
-
-```python
-from fleet.types.workflows import RequestCreateResponse
-```
-
-Methods:
-
-- <code title="post /workflows/request/scrape">client.workflows.request.<a href="./src/fleet/resources/workflows/request.py">create</a>(\*\*<a href="src/fleet/types/workflows/request_create_params.py">params</a>) -> <a href="./src/fleet/types/workflows/request_create_response.py">RequestCreateResponse</a></code>
+- <code title="get /sessions/{session_id}/scrape/browser-strategy">client.sessions.scrape.browser_strategy.<a href="./src/fleet/resources/sessions/scrape/browser_strategy.py">get</a>(session_id) -> <a href="./src/fleet/types/sessions/scrape/response.py">Response</a></code>
+- <code title="post /sessions/{session_id}/scrape/browser-strategy">client.sessions.scrape.browser_strategy.<a href="./src/fleet/resources/sessions/scrape/browser_strategy.py">set</a>(session_id, \*\*<a href="src/fleet/types/sessions/scrape/browser_strategy_set_params.py">params</a>) -> <a href="./src/fleet/types/sessions/scrape/response.py">Response</a></code>
