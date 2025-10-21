@@ -16,6 +16,7 @@ from ..._response import (
 )
 from ..._base_client import make_request_options
 from ...types.sessions import start_new_params, start_existing_params
+from ...types.browser_configuration_param import BrowserConfigurationParam
 from ...types.sessions.start_new_response import StartNewResponse
 from ...types.sessions.start_existing_response import StartExistingResponse
 
@@ -85,7 +86,7 @@ class StartResource(SyncAPIResource):
     def new(
         self,
         *,
-        browser_configuration: start_new_params.BrowserConfiguration,
+        browser_configuration: BrowserConfigurationParam,
         url: str | Omit = omit,
         agentic: bool | Omit = omit,
         enable_xvfb: bool | Omit = omit,
@@ -206,7 +207,7 @@ class AsyncStartResource(AsyncAPIResource):
     async def new(
         self,
         *,
-        browser_configuration: start_new_params.BrowserConfiguration,
+        browser_configuration: BrowserConfigurationParam,
         url: str | Omit = omit,
         agentic: bool | Omit = omit,
         enable_xvfb: bool | Omit = omit,

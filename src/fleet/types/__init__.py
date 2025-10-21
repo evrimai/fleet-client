@@ -11,4 +11,5 @@ from .session_retrieve_response import SessionRetrieveResponse as SessionRetriev
 from .session_visit_page_params import SessionVisitPageParams as SessionVisitPageParams
 from .workflow_results_response import WorkflowResultsResponse as WorkflowResultsResponse
 from .workflow_describe_response import WorkflowDescribeResponse as WorkflowDescribeResponse
+from .browser_configuration_param import BrowserConfigurationParam as BrowserConfigurationParam
 from .session_visit_page_response import SessionVisitPageResponse as SessionVisitPageResponse
