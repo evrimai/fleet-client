@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import Optional
 from typing_extensions import Literal
 
 import httpx
@@ -14,7 +15,7 @@ from .mass import (
     MassResourceWithStreamingResponse,
     AsyncMassResourceWithStreamingResponse,
 )
-from ...._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
+from ...._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ...._utils import maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
@@ -104,9 +105,18 @@ class RequestResource(SyncAPIResource):
     def create_business_owner(
         self,
         *,
-        company_url: str,
+        company_name: str,
+        addresses: Optional[SequenceNotStr[str]] | Omit = omit,
         camo: bool | Omit = omit,
+        company_url: Optional[str] | Omit = omit,
+        emails: Optional[SequenceNotStr[str]] | Omit = omit,
+        max_steps: int | Omit = omit,
+        n_google_links: int | Omit = omit,
         n_pages: int | Omit = omit,
+        personnel_names: Optional[SequenceNotStr[str]] | Omit = omit,
+        proxy_password: Optional[str] | Omit = omit,
+        proxy_url: Optional[str] | Omit = omit,
+        proxy_username: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -118,11 +128,29 @@ class RequestResource(SyncAPIResource):
         Make a request to temporal worker
 
         Args:
-          company_url: The URL of the business to find the owner for
+          company_name: The name of the business
+
+          addresses: Optional list of addresses associated with the business
 
           camo: Whether to use CAMO for scraping (if available)
 
+          company_url: The URL of the business to find the owner for
+
+          emails: Optional list of emails associated with the business
+
+          max_steps: Maximum number of steps the agent can take
+
+          n_google_links: Number of Google search links to consider if needed
+
           n_pages: Number of pages to scrape for owner information
+
+          personnel_names: List of people associated with the business
+
+          proxy_password: Optional proxy password
+
+          proxy_url: Optional proxy URL to use for web requests
+
+          proxy_username: Optional proxy username
 
           extra_headers: Send extra headers
 
@@ -136,9 +164,18 @@ class RequestResource(SyncAPIResource):
             "/workflows/request/business-owner",
             body=maybe_transform(
                 {
-                    "company_url": company_url,
+                    "company_name": company_name,
+                    "addresses": addresses,
                     "camo": camo,
+                    "company_url": company_url,
+                    "emails": emails,
+                    "max_steps": max_steps,
+                    "n_google_links": n_google_links,
                     "n_pages": n_pages,
+                    "personnel_names": personnel_names,
+                    "proxy_password": proxy_password,
+                    "proxy_url": proxy_url,
+                    "proxy_username": proxy_username,
                 },
                 request_create_business_owner_params.RequestCreateBusinessOwnerParams,
             ),
@@ -221,9 +258,18 @@ class AsyncRequestResource(AsyncAPIResource):
     async def create_business_owner(
         self,
         *,
-        company_url: str,
+        company_name: str,
+        addresses: Optional[SequenceNotStr[str]] | Omit = omit,
         camo: bool | Omit = omit,
+        company_url: Optional[str] | Omit = omit,
+        emails: Optional[SequenceNotStr[str]] | Omit = omit,
+        max_steps: int | Omit = omit,
+        n_google_links: int | Omit = omit,
         n_pages: int | Omit = omit,
+        personnel_names: Optional[SequenceNotStr[str]] | Omit = omit,
+        proxy_password: Optional[str] | Omit = omit,
+        proxy_url: Optional[str] | Omit = omit,
+        proxy_username: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -235,11 +281,29 @@ class AsyncRequestResource(AsyncAPIResource):
         Make a request to temporal worker
 
         Args:
-          company_url: The URL of the business to find the owner for
+          company_name: The name of the business
+
+          addresses: Optional list of addresses associated with the business
 
           camo: Whether to use CAMO for scraping (if available)
 
+          company_url: The URL of the business to find the owner for
+
+          emails: Optional list of emails associated with the business
+
+          max_steps: Maximum number of steps the agent can take
+
+          n_google_links: Number of Google search links to consider if needed
+
           n_pages: Number of pages to scrape for owner information
+
+          personnel_names: List of people associated with the business
+
+          proxy_password: Optional proxy password
+
+          proxy_url: Optional proxy URL to use for web requests
+
+          proxy_username: Optional proxy username
 
           extra_headers: Send extra headers
 
@@ -253,9 +317,18 @@ class AsyncRequestResource(AsyncAPIResource):
             "/workflows/request/business-owner",
             body=await async_maybe_transform(
                 {
-                    "company_url": company_url,
+                    "company_name": company_name,
+                    "addresses": addresses,
                     "camo": camo,
+                    "company_url": company_url,
+                    "emails": emails,
+                    "max_steps": max_steps,
+                    "n_google_links": n_google_links,
                     "n_pages": n_pages,
+                    "personnel_names": personnel_names,
+                    "proxy_password": proxy_password,
+                    "proxy_url": proxy_url,
+                    "proxy_username": proxy_username,
                 },
                 request_create_business_owner_params.RequestCreateBusinessOwnerParams,
             ),
