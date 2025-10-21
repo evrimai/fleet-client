@@ -77,6 +77,7 @@ class TestRequest:
     def test_method_create_business_owner_with_all_params(self, client: Fleet) -> None:
         request = client.workflows.request.create_business_owner(
             company_url="company_url",
+            camo=True,
             n_pages=0,
         )
         assert_matches_type(WorkflowResultWithMessage, request, path=["response"])
@@ -172,6 +173,7 @@ class TestAsyncRequest:
     async def test_method_create_business_owner_with_all_params(self, async_client: AsyncFleet) -> None:
         request = await async_client.workflows.request.create_business_owner(
             company_url="company_url",
+            camo=True,
             n_pages=0,
         )
         assert_matches_type(WorkflowResultWithMessage, request, path=["response"])
