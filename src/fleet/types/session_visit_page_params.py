@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
-from typing_extensions import Literal, Required, TypedDict
+from typing_extensions import Required, TypedDict
+
+from .workflows.wait_until import WaitUntil
 
 __all__ = ["SessionVisitPageParams"]
 
@@ -10,4 +12,4 @@ __all__ = ["SessionVisitPageParams"]
 class SessionVisitPageParams(TypedDict, total=False):
     url: Required[str]
 
-    wait_until: Literal["load", "networkidle", "domcontentloaded", "commit"]
+    wait_until: WaitUntil

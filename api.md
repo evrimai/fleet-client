@@ -22,7 +22,7 @@ Methods:
 Types:
 
 ```python
-from fleet.types.workflows import RequestCreateResponse
+from fleet.types.workflows import WaitUntil, RequestCreateResponse
 ```
 
 Methods:
@@ -75,6 +75,7 @@ Types:
 
 ```python
 from fleet.types import (
+    BrowserConfiguration,
     SessionParameters,
     SessionCreateResponse,
     SessionRetrieveResponse,
