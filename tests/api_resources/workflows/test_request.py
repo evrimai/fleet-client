@@ -9,7 +9,10 @@ import pytest
 
 from fleet import Fleet, AsyncFleet
 from tests.utils import assert_matches_type
-from fleet.types.workflows import RequestCreateResponse
+from fleet.types.workflows import (
+    RequestCreateResponse,
+)
+from fleet.types.workflows.request import WorkflowResultWithMessage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -63,6 +66,49 @@ class TestRequest:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_create_business_owner(self, client: Fleet) -> None:
+        request = client.workflows.request.create_business_owner(
+            company_url="company_url",
+        )
+        assert_matches_type(WorkflowResultWithMessage, request, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_create_business_owner_with_all_params(self, client: Fleet) -> None:
+        request = client.workflows.request.create_business_owner(
+            company_url="company_url",
+            n_pages=0,
+        )
+        assert_matches_type(WorkflowResultWithMessage, request, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_raw_response_create_business_owner(self, client: Fleet) -> None:
+        response = client.workflows.request.with_raw_response.create_business_owner(
+            company_url="company_url",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        request = response.parse()
+        assert_matches_type(WorkflowResultWithMessage, request, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_streaming_response_create_business_owner(self, client: Fleet) -> None:
+        with client.workflows.request.with_streaming_response.create_business_owner(
+            company_url="company_url",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            request = response.parse()
+            assert_matches_type(WorkflowResultWithMessage, request, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
 
 class TestAsyncRequest:
     parametrize = pytest.mark.parametrize(
@@ -112,5 +158,48 @@ class TestAsyncRequest:
 
             request = await response.parse()
             assert_matches_type(RequestCreateResponse, request, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_create_business_owner(self, async_client: AsyncFleet) -> None:
+        request = await async_client.workflows.request.create_business_owner(
+            company_url="company_url",
+        )
+        assert_matches_type(WorkflowResultWithMessage, request, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_create_business_owner_with_all_params(self, async_client: AsyncFleet) -> None:
+        request = await async_client.workflows.request.create_business_owner(
+            company_url="company_url",
+            n_pages=0,
+        )
+        assert_matches_type(WorkflowResultWithMessage, request, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_raw_response_create_business_owner(self, async_client: AsyncFleet) -> None:
+        response = await async_client.workflows.request.with_raw_response.create_business_owner(
+            company_url="company_url",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        request = await response.parse()
+        assert_matches_type(WorkflowResultWithMessage, request, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_streaming_response_create_business_owner(self, async_client: AsyncFleet) -> None:
+        async with async_client.workflows.request.with_streaming_response.create_business_owner(
+            company_url="company_url",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            request = await response.parse()
+            assert_matches_type(WorkflowResultWithMessage, request, path=["response"])
 
         assert cast(Any, response.is_closed) is True
