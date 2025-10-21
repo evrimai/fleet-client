@@ -105,6 +105,7 @@ class RequestResource(SyncAPIResource):
         self,
         *,
         company_url: str,
+        camo: bool | Omit = omit,
         n_pages: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -118,6 +119,8 @@ class RequestResource(SyncAPIResource):
 
         Args:
           company_url: The URL of the business to find the owner for
+
+          camo: Whether to use CAMO for scraping (if available)
 
           n_pages: Number of pages to scrape for owner information
 
@@ -134,6 +137,7 @@ class RequestResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "company_url": company_url,
+                    "camo": camo,
                     "n_pages": n_pages,
                 },
                 request_create_business_owner_params.RequestCreateBusinessOwnerParams,
@@ -218,6 +222,7 @@ class AsyncRequestResource(AsyncAPIResource):
         self,
         *,
         company_url: str,
+        camo: bool | Omit = omit,
         n_pages: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -231,6 +236,8 @@ class AsyncRequestResource(AsyncAPIResource):
 
         Args:
           company_url: The URL of the business to find the owner for
+
+          camo: Whether to use CAMO for scraping (if available)
 
           n_pages: Number of pages to scrape for owner information
 
@@ -247,6 +254,7 @@ class AsyncRequestResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "company_url": company_url,
+                    "camo": camo,
                     "n_pages": n_pages,
                 },
                 request_create_business_owner_params.RequestCreateBusinessOwnerParams,

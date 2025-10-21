@@ -11,5 +11,8 @@ class RequestCreateBusinessOwnerParams(TypedDict, total=False):
     company_url: Required[str]
     """The URL of the business to find the owner for"""
 
+    camo: bool
+    """Whether to use CAMO for scraping (if available)"""
+
     n_pages: int
     """Number of pages to scrape for owner information"""
