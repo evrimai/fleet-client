@@ -1,4 +1,4 @@
 configured_endpoints: 37
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/evrim%2Ffleet-40593e2dc7067a122e178cb663fa1030455a24191fe00171eb6d78ad3309e716.yml
-openapi_spec_hash: 2fae4f365bac7a0ea03ad27d656756ac
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/evrim%2Ffleet-f46c3a5d4ca8ce3a424436edb3bdeb40ce004192551775d624a421ac9aee979b.yml
+openapi_spec_hash: 8810e693d0f8df83b5fe1a1ba9448ce4
 config_hash: 7866d9aea527194fdbfa30eb7c82f630
