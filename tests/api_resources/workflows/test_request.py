@@ -68,7 +68,7 @@ class TestRequest:
     @parametrize
     def test_method_create_business_owner(self, client: Fleet) -> None:
         request = client.workflows.request.create_business_owner(
-            company_url="company_url",
+            company_name="company_name",
         )
         assert_matches_type(WorkflowResultWithMessage, request, path=["response"])
 
@@ -76,9 +76,18 @@ class TestRequest:
     @parametrize
     def test_method_create_business_owner_with_all_params(self, client: Fleet) -> None:
         request = client.workflows.request.create_business_owner(
-            company_url="company_url",
+            company_name="company_name",
+            addresses=["string"],
             camo=True,
+            company_url="company_url",
+            emails=["string"],
+            max_steps=0,
+            n_google_links=0,
             n_pages=0,
+            personnel_names=["string"],
+            proxy_password="proxy_password",
+            proxy_url="proxy_url",
+            proxy_username="proxy_username",
         )
         assert_matches_type(WorkflowResultWithMessage, request, path=["response"])
 
@@ -86,7 +95,7 @@ class TestRequest:
     @parametrize
     def test_raw_response_create_business_owner(self, client: Fleet) -> None:
         response = client.workflows.request.with_raw_response.create_business_owner(
-            company_url="company_url",
+            company_name="company_name",
         )
 
         assert response.is_closed is True
@@ -98,7 +107,7 @@ class TestRequest:
     @parametrize
     def test_streaming_response_create_business_owner(self, client: Fleet) -> None:
         with client.workflows.request.with_streaming_response.create_business_owner(
-            company_url="company_url",
+            company_name="company_name",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -164,7 +173,7 @@ class TestAsyncRequest:
     @parametrize
     async def test_method_create_business_owner(self, async_client: AsyncFleet) -> None:
         request = await async_client.workflows.request.create_business_owner(
-            company_url="company_url",
+            company_name="company_name",
         )
         assert_matches_type(WorkflowResultWithMessage, request, path=["response"])
 
@@ -172,9 +181,18 @@ class TestAsyncRequest:
     @parametrize
     async def test_method_create_business_owner_with_all_params(self, async_client: AsyncFleet) -> None:
         request = await async_client.workflows.request.create_business_owner(
-            company_url="company_url",
+            company_name="company_name",
+            addresses=["string"],
             camo=True,
+            company_url="company_url",
+            emails=["string"],
+            max_steps=0,
+            n_google_links=0,
             n_pages=0,
+            personnel_names=["string"],
+            proxy_password="proxy_password",
+            proxy_url="proxy_url",
+            proxy_username="proxy_username",
         )
         assert_matches_type(WorkflowResultWithMessage, request, path=["response"])
 
@@ -182,7 +200,7 @@ class TestAsyncRequest:
     @parametrize
     async def test_raw_response_create_business_owner(self, async_client: AsyncFleet) -> None:
         response = await async_client.workflows.request.with_raw_response.create_business_owner(
-            company_url="company_url",
+            company_name="company_name",
         )
 
         assert response.is_closed is True
@@ -194,7 +212,7 @@ class TestAsyncRequest:
     @parametrize
     async def test_streaming_response_create_business_owner(self, async_client: AsyncFleet) -> None:
         async with async_client.workflows.request.with_streaming_response.create_business_owner(
-            company_url="company_url",
+            company_name="company_name",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
