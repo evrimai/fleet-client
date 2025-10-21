@@ -9,7 +9,9 @@ import pytest
 
 from fleet import Fleet, AsyncFleet
 from tests.utils import assert_matches_type
-from fleet.types.workflows import RequestCreateResponse
+from fleet.types.workflows import (
+    RequestCreateResponse,
+)
 from fleet.types.workflows.request import WorkflowResultWithMessage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")

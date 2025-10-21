@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing_extensions import Literal
-
 import httpx
 
 from ...._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
@@ -17,7 +15,9 @@ from ...._response import (
     async_to_streamed_response_wrapper,
 )
 from ...._base_client import make_request_options
+from ....types.workflows import WaitUntil
 from ....types.sessions.scrape import async_create_job_params
+from ....types.workflows.wait_until import WaitUntil
 from ....types.sessions.scrape.async_list_jobs_response import AsyncListJobsResponse
 from ....types.sessions.scrape.async_create_job_response import AsyncCreateJobResponse
 from ....types.sessions.scrape.async_delete_job_response import AsyncDeleteJobResponse
@@ -52,7 +52,7 @@ class AsyncResource(SyncAPIResource):
         *,
         url: str,
         stealth: bool | Omit = omit,
-        wait_until: Literal["load", "networkidle", "domcontentloaded", "commit"] | Omit = omit,
+        wait_until: WaitUntil | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -222,7 +222,7 @@ class AsyncAsyncResource(AsyncAPIResource):
         *,
         url: str,
         stealth: bool | Omit = omit,
-        wait_until: Literal["load", "networkidle", "domcontentloaded", "commit"] | Omit = omit,
+        wait_until: WaitUntil | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
