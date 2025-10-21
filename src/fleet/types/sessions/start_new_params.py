@@ -4,11 +4,13 @@ from __future__ import annotations
 
 from typing_extensions import Required, TypedDict
 
-__all__ = ["StartNewParams", "BrowserConfiguration"]
+from ..browser_configuration_param import BrowserConfigurationParam
+
+__all__ = ["StartNewParams"]
 
 
 class StartNewParams(TypedDict, total=False):
-    browser_configuration: Required[BrowserConfiguration]
+    browser_configuration: Required[BrowserConfigurationParam]
     """Browser configuration."""
 
     url: str
@@ -27,15 +29,3 @@ class StartNewParams(TypedDict, total=False):
     proxy_username: str
 
     vnc_password: str
-
-
-class BrowserConfiguration(TypedDict, total=False):
-    camo: bool
-
-    headless: bool
-
-    stealth: bool
-
-    track_all_responses: bool
-
-    wait_until: str

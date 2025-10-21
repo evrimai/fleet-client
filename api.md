@@ -75,6 +75,7 @@ Types:
 
 ```python
 from fleet.types import (
+    BrowserConfiguration,
     SessionParameters,
     SessionCreateResponse,
     SessionRetrieveResponse,

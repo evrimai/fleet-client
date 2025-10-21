@@ -55,6 +55,7 @@ from ...types.session_create_response import SessionCreateResponse
 from ...types.session_delete_response import SessionDeleteResponse
 from ...types.session_warm_up_response import SessionWarmUpResponse
 from ...types.session_retrieve_response import SessionRetrieveResponse
+from ...types.browser_configuration_param import BrowserConfigurationParam
 from ...types.session_visit_page_response import SessionVisitPageResponse
 
 __all__ = ["SessionsResource", "AsyncSessionsResource"]
@@ -99,7 +100,7 @@ class SessionsResource(SyncAPIResource):
     def create(
         self,
         *,
-        browser_configuration: session_create_params.BrowserConfiguration,
+        browser_configuration: BrowserConfigurationParam,
         agentic: bool | Omit = omit,
         enable_xvfb: bool | Omit = omit,
         n_responses_to_track: int | Omit = omit,
@@ -335,7 +336,7 @@ class AsyncSessionsResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        browser_configuration: session_create_params.BrowserConfiguration,
+        browser_configuration: BrowserConfigurationParam,
         agentic: bool | Omit = omit,
         enable_xvfb: bool | Omit = omit,
         n_responses_to_track: int | Omit = omit,
