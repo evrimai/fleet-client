@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import Optional
-from typing_extensions import Required, TypedDict
+from typing_extensions import Literal, Required, TypedDict
 
 from ..._types import SequenceNotStr
 
@@ -26,14 +26,14 @@ class RequestCreateBusinessOwnerParams(TypedDict, total=False):
     emails: Optional[SequenceNotStr[str]]
     """Optional list of emails associated with the business"""
 
-    max_steps: int
+    max_steps: Optional[int]
     """Maximum number of steps the agent can take"""
-
-    n_google_links: int
-    """Number of Google search links to consider if needed"""
 
     n_pages: int
     """Number of pages to scrape for owner information"""
+
+    n_search_engine_links: int
+    """Number of search engine links to consider if needed"""
 
     personnel_names: Optional[SequenceNotStr[str]]
     """List of people associated with the business"""
@@ -46,3 +46,6 @@ class RequestCreateBusinessOwnerParams(TypedDict, total=False):
 
     proxy_username: Optional[str]
     """Optional proxy username"""
+
+    search_engine: Literal["duckduckgo", "google", "bing"]
+    """Search engine to use for finding links"""
