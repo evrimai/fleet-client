@@ -84,12 +84,13 @@ class TestRequest:
             company_url="company_url",
             emails=["string"],
             max_steps=0,
-            n_google_links=0,
             n_pages=0,
+            n_search_engine_links=0,
             personnel_names=["string"],
             proxy_password="proxy_password",
             proxy_url="proxy_url",
             proxy_username="proxy_username",
+            search_engine="duckduckgo",
         )
         assert_matches_type(WorkflowResultWithMessage, request, path=["response"])
 
@@ -189,12 +190,13 @@ class TestAsyncRequest:
             company_url="company_url",
             emails=["string"],
             max_steps=0,
-            n_google_links=0,
             n_pages=0,
+            n_search_engine_links=0,
             personnel_names=["string"],
             proxy_password="proxy_password",
             proxy_url="proxy_url",
             proxy_username="proxy_username",
+            search_engine="duckduckgo",
         )
         assert_matches_type(WorkflowResultWithMessage, request, path=["response"])
 

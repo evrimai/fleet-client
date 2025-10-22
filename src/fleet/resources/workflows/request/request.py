@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from typing import Optional
+from typing_extensions import Literal
 
 import httpx
 
@@ -110,13 +111,14 @@ class RequestResource(SyncAPIResource):
         camo: bool | Omit = omit,
         company_url: Optional[str] | Omit = omit,
         emails: Optional[SequenceNotStr[str]] | Omit = omit,
-        max_steps: int | Omit = omit,
-        n_google_links: int | Omit = omit,
+        max_steps: Optional[int] | Omit = omit,
         n_pages: int | Omit = omit,
+        n_search_engine_links: int | Omit = omit,
         personnel_names: Optional[SequenceNotStr[str]] | Omit = omit,
         proxy_password: Optional[str] | Omit = omit,
         proxy_url: Optional[str] | Omit = omit,
         proxy_username: Optional[str] | Omit = omit,
+        search_engine: Literal["duckduckgo", "google", "bing"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -140,9 +142,9 @@ class RequestResource(SyncAPIResource):
 
           max_steps: Maximum number of steps the agent can take
 
-          n_google_links: Number of Google search links to consider if needed
-
           n_pages: Number of pages to scrape for owner information
+
+          n_search_engine_links: Number of search engine links to consider if needed
 
           personnel_names: List of people associated with the business
 
@@ -151,6 +153,8 @@ class RequestResource(SyncAPIResource):
           proxy_url: Optional proxy URL to use for web requests
 
           proxy_username: Optional proxy username
+
+          search_engine: Search engine to use for finding links
 
           extra_headers: Send extra headers
 
@@ -170,12 +174,13 @@ class RequestResource(SyncAPIResource):
                     "company_url": company_url,
                     "emails": emails,
                     "max_steps": max_steps,
-                    "n_google_links": n_google_links,
                     "n_pages": n_pages,
+                    "n_search_engine_links": n_search_engine_links,
                     "personnel_names": personnel_names,
                     "proxy_password": proxy_password,
                     "proxy_url": proxy_url,
                     "proxy_username": proxy_username,
+                    "search_engine": search_engine,
                 },
                 request_create_business_owner_params.RequestCreateBusinessOwnerParams,
             ),
@@ -263,13 +268,14 @@ class AsyncRequestResource(AsyncAPIResource):
         camo: bool | Omit = omit,
         company_url: Optional[str] | Omit = omit,
         emails: Optional[SequenceNotStr[str]] | Omit = omit,
-        max_steps: int | Omit = omit,
-        n_google_links: int | Omit = omit,
+        max_steps: Optional[int] | Omit = omit,
         n_pages: int | Omit = omit,
+        n_search_engine_links: int | Omit = omit,
         personnel_names: Optional[SequenceNotStr[str]] | Omit = omit,
         proxy_password: Optional[str] | Omit = omit,
         proxy_url: Optional[str] | Omit = omit,
         proxy_username: Optional[str] | Omit = omit,
+        search_engine: Literal["duckduckgo", "google", "bing"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -293,9 +299,9 @@ class AsyncRequestResource(AsyncAPIResource):
 
           max_steps: Maximum number of steps the agent can take
 
-          n_google_links: Number of Google search links to consider if needed
-
           n_pages: Number of pages to scrape for owner information
+
+          n_search_engine_links: Number of search engine links to consider if needed
 
           personnel_names: List of people associated with the business
 
@@ -304,6 +310,8 @@ class AsyncRequestResource(AsyncAPIResource):
           proxy_url: Optional proxy URL to use for web requests
 
           proxy_username: Optional proxy username
+
+          search_engine: Search engine to use for finding links
 
           extra_headers: Send extra headers
 
@@ -323,12 +331,13 @@ class AsyncRequestResource(AsyncAPIResource):
                     "company_url": company_url,
                     "emails": emails,
                     "max_steps": max_steps,
-                    "n_google_links": n_google_links,
                     "n_pages": n_pages,
+                    "n_search_engine_links": n_search_engine_links,
                     "personnel_names": personnel_names,
                     "proxy_password": proxy_password,
                     "proxy_url": proxy_url,
                     "proxy_username": proxy_username,
+                    "search_engine": search_engine,
                 },
                 request_create_business_owner_params.RequestCreateBusinessOwnerParams,
             ),
