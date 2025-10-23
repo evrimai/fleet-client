@@ -55,3 +55,6 @@ class RequestCreateBusinessOwnerParams(TypedDict, total=False):
 
     search_engine: Literal["duckduckgo", "google", "bing"]
     """Search engine to use for finding links"""
+
+    workflow_id: Optional[str]
+    """Optional workflow ID for tracking"""
