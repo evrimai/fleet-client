@@ -26,8 +26,7 @@ from ...._response import (
     async_to_streamed_response_wrapper,
 )
 from ...._base_client import make_request_options
-from ....types.workflows import WaitUntil, request_create_params, request_create_business_owner_params
-from ....types.workflows.wait_until import WaitUntil
+from ....types.workflows import request_create_params, request_create_business_owner_params
 from ....types.workflows.request_create_response import RequestCreateResponse
 from ....types.workflows.request.workflow_result_with_message import WorkflowResultWithMessage
 
@@ -65,7 +64,7 @@ class RequestResource(SyncAPIResource):
         camo: bool | Omit = omit,
         ephemeral_browser: bool | Omit = omit,
         stealth: bool | Omit = omit,
-        wait_until: WaitUntil | Omit = omit,
+        wait_until: Literal["load", "networkidle", "domcontentloaded", "commit"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -112,6 +111,7 @@ class RequestResource(SyncAPIResource):
         company_url: Optional[str] | Omit = omit,
         emails: Optional[SequenceNotStr[str]] | Omit = omit,
         max_steps: Optional[int] | Omit = omit,
+        n_contact_pages: int | Omit = omit,
         n_pages: int | Omit = omit,
         n_search_engine_links: int | Omit = omit,
         personnel_names: Optional[SequenceNotStr[str]] | Omit = omit,
@@ -141,6 +141,9 @@ class RequestResource(SyncAPIResource):
           emails: Optional list of emails associated with the business
 
           max_steps: Maximum number of steps the agent can take
+
+          n_contact_pages: Number of additional pages to visit to find contact info after identifying the
+              owner
 
           n_pages: Number of pages to scrape for owner information
 
@@ -174,6 +177,7 @@ class RequestResource(SyncAPIResource):
                     "company_url": company_url,
                     "emails": emails,
                     "max_steps": max_steps,
+                    "n_contact_pages": n_contact_pages,
                     "n_pages": n_pages,
                     "n_search_engine_links": n_search_engine_links,
                     "personnel_names": personnel_names,
@@ -222,7 +226,7 @@ class AsyncRequestResource(AsyncAPIResource):
         camo: bool | Omit = omit,
         ephemeral_browser: bool | Omit = omit,
         stealth: bool | Omit = omit,
-        wait_until: WaitUntil | Omit = omit,
+        wait_until: Literal["load", "networkidle", "domcontentloaded", "commit"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -269,6 +273,7 @@ class AsyncRequestResource(AsyncAPIResource):
         company_url: Optional[str] | Omit = omit,
         emails: Optional[SequenceNotStr[str]] | Omit = omit,
         max_steps: Optional[int] | Omit = omit,
+        n_contact_pages: int | Omit = omit,
         n_pages: int | Omit = omit,
         n_search_engine_links: int | Omit = omit,
         personnel_names: Optional[SequenceNotStr[str]] | Omit = omit,
@@ -298,6 +303,9 @@ class AsyncRequestResource(AsyncAPIResource):
           emails: Optional list of emails associated with the business
 
           max_steps: Maximum number of steps the agent can take
+
+          n_contact_pages: Number of additional pages to visit to find contact info after identifying the
+              owner
 
           n_pages: Number of pages to scrape for owner information
 
@@ -331,6 +339,7 @@ class AsyncRequestResource(AsyncAPIResource):
                     "company_url": company_url,
                     "emails": emails,
                     "max_steps": max_steps,
+                    "n_contact_pages": n_contact_pages,
                     "n_pages": n_pages,
                     "n_search_engine_links": n_search_engine_links,
                     "personnel_names": personnel_names,
