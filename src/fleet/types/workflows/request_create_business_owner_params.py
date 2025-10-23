@@ -29,6 +29,12 @@ class RequestCreateBusinessOwnerParams(TypedDict, total=False):
     max_steps: Optional[int]
     """Maximum number of steps the agent can take"""
 
+    n_contact_pages: int
+    """
+    Number of additional pages to visit to find contact info after identifying the
+    owner
+    """
+
     n_pages: int
     """Number of pages to scrape for owner information"""
 
@@ -49,3 +55,6 @@ class RequestCreateBusinessOwnerParams(TypedDict, total=False):
 
     search_engine: Literal["duckduckgo", "google", "bing"]
     """Search engine to use for finding links"""
+
+    workflow_id: Optional[str]
+    """Optional workflow ID for tracking"""
