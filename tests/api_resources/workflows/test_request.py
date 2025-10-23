@@ -90,6 +90,7 @@ class TestRequest:
             proxy_url="proxy_url",
             proxy_username="proxy_username",
             search_engine="duckduckgo",
+            workflow_id="workflow_id",
         )
         assert_matches_type(WorkflowResultWithMessage, request, path=["response"])
 
@@ -197,6 +198,7 @@ class TestAsyncRequest:
             proxy_url="proxy_url",
             proxy_username="proxy_username",
             search_engine="duckduckgo",
+            workflow_id="workflow_id",
         )
         assert_matches_type(WorkflowResultWithMessage, request, path=["response"])
 
