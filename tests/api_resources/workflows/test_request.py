@@ -9,9 +9,7 @@ import pytest
 
 from fleet import Fleet, AsyncFleet
 from tests.utils import assert_matches_type
-from fleet.types.workflows import (
-    RequestCreateResponse,
-)
+from fleet.types.workflows import RequestCreateResponse
 from fleet.types.workflows.request import WorkflowResultWithMessage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -84,6 +82,7 @@ class TestRequest:
             company_url="company_url",
             emails=["string"],
             max_steps=0,
+            n_contact_pages=0,
             n_pages=0,
             n_search_engine_links=0,
             personnel_names=["string"],
@@ -190,6 +189,7 @@ class TestAsyncRequest:
             company_url="company_url",
             emails=["string"],
             max_steps=0,
+            n_contact_pages=0,
             n_pages=0,
             n_search_engine_links=0,
             personnel_names=["string"],
