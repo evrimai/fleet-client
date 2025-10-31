@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.10.0 (2025-10-31)
+
+Full Changelog: [v0.9.0...v0.10.0](https://github.com/evrimai/fleet-client/compare/v0.9.0...v0.10.0)
+
+### Features
+
+* **api:** api update ([fbe9698](https://github.com/evrimai/fleet-client/commit/fbe96981657c96c3b0c2d17b5ac2c8dd3356866c))
+
+
+### Chores
+
+* **internal/tests:** avoid race condition with implicit client cleanup ([1e9b188](https://github.com/evrimai/fleet-client/commit/1e9b1887c9e824ea2eed742fef0137a049862a74))
+
 ## 0.9.0 (2025-10-31)
 
 Full Changelog: [v0.8.0...v0.9.0](https://github.com/evrimai/fleet-client/compare/v0.8.0...v0.9.0)

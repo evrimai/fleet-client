@@ -2,9 +2,7 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, TypedDict
-
-from ...workflows.wait_until import WaitUntil
+from typing_extensions import Literal, Required, TypedDict
 
 __all__ = ["AsyncCreateJobParams"]
 
@@ -14,4 +12,4 @@ class AsyncCreateJobParams(TypedDict, total=False):
 
     stealth: bool
 
-    wait_until: WaitUntil
+    wait_until: Literal["load", "networkidle", "domcontentloaded", "commit"]
