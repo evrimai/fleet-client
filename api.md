@@ -22,13 +22,14 @@ Methods:
 Types:
 
 ```python
-from fleet.types.workflows import RequestCreateResponse
+from fleet.types.workflows import WaitUntil, RequestCreateResponse
 ```
 
 Methods:
 
 - <code title="post /workflows/request/scrape">client.workflows.request.<a href="./src/fleet/resources/workflows/request/request.py">create</a>(\*\*<a href="src/fleet/types/workflows/request_create_params.py">params</a>) -> <a href="./src/fleet/types/workflows/request_create_response.py">RequestCreateResponse</a></code>
 - <code title="post /workflows/request/business-owner">client.workflows.request.<a href="./src/fleet/resources/workflows/request/request.py">create_business_owner</a>(\*\*<a href="src/fleet/types/workflows/request_create_business_owner_params.py">params</a>) -> <a href="./src/fleet/types/workflows/request/workflow_result_with_message.py">WorkflowResultWithMessage</a></code>
+- <code title="post /workflows/request/personal-email">client.workflows.request.<a href="./src/fleet/resources/workflows/request/request.py">create_personal_email_request</a>(\*\*<a href="src/fleet/types/workflows/request_create_personal_email_request_params.py">params</a>) -> <a href="./src/fleet/types/workflows/request/workflow_result_with_message.py">WorkflowResultWithMessage</a></code>
 
 ### Mass
 

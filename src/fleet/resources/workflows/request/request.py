@@ -26,7 +26,13 @@ from ...._response import (
     async_to_streamed_response_wrapper,
 )
 from ...._base_client import make_request_options
-from ....types.workflows import request_create_params, request_create_business_owner_params
+from ....types.workflows import (
+    WaitUntil,
+    request_create_params,
+    request_create_business_owner_params,
+    request_create_personal_email_request_params,
+)
+from ....types.workflows.wait_until import WaitUntil
 from ....types.workflows.request_create_response import RequestCreateResponse
 from ....types.workflows.request.workflow_result_with_message import WorkflowResultWithMessage
 
@@ -64,7 +70,7 @@ class RequestResource(SyncAPIResource):
         camo: bool | Omit = omit,
         ephemeral_browser: bool | Omit = omit,
         stealth: bool | Omit = omit,
-        wait_until: Literal["load", "networkidle", "domcontentloaded", "commit"] | Omit = omit,
+        wait_until: WaitUntil | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -198,6 +204,105 @@ class RequestResource(SyncAPIResource):
             cast_to=WorkflowResultWithMessage,
         )
 
+    def create_personal_email_request(
+        self,
+        *,
+        person_name: str,
+        additional_context: Optional[str] | Omit = omit,
+        camo: bool | Omit = omit,
+        company_name: Optional[str] | Omit = omit,
+        job_title: Optional[str] | Omit = omit,
+        known_websites: Optional[SequenceNotStr[str]] | Omit = omit,
+        linkedin_url: Optional[str] | Omit = omit,
+        location: Optional[str] | Omit = omit,
+        max_steps: Optional[int] | Omit = omit,
+        n_pages: int | Omit = omit,
+        n_search_engine_links: int | Omit = omit,
+        proxy_password: Optional[str] | Omit = omit,
+        proxy_url: Optional[str] | Omit = omit,
+        proxy_username: Optional[str] | Omit = omit,
+        search_engine: Literal["duckduckgo", "google", "bing"] | Omit = omit,
+        workflow_id: Optional[str] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> WorkflowResultWithMessage:
+        """
+        Make a request to temporal worker
+
+        Args:
+          person_name: The name of the person to find email for
+
+          additional_context: Any additional context that might help find the person's email
+
+          camo: Whether to use CAMO for scraping
+
+          company_name: Optional company name associated with the person
+
+          job_title: Optional job title of the person
+
+          known_websites: Optional list of websites associated with the person
+
+          linkedin_url: Optional LinkedIn URL of the person
+
+          location: Optional location (city, state) of the person
+
+          max_steps: Maximum number of steps the agent can take
+
+          n_pages: Number of pages to visit while searching for email
+
+          n_search_engine_links: Number of search engine results to explore
+
+          proxy_password: Optional proxy password
+
+          proxy_url: Optional proxy URL to use for web requests
+
+          proxy_username: Optional proxy username
+
+          search_engine: Search engine to use for finding email
+
+          workflow_id: Optional workflow ID for tracking
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/workflows/request/personal-email",
+            body=maybe_transform(
+                {
+                    "person_name": person_name,
+                    "additional_context": additional_context,
+                    "camo": camo,
+                    "company_name": company_name,
+                    "job_title": job_title,
+                    "known_websites": known_websites,
+                    "linkedin_url": linkedin_url,
+                    "location": location,
+                    "max_steps": max_steps,
+                    "n_pages": n_pages,
+                    "n_search_engine_links": n_search_engine_links,
+                    "proxy_password": proxy_password,
+                    "proxy_url": proxy_url,
+                    "proxy_username": proxy_username,
+                    "search_engine": search_engine,
+                    "workflow_id": workflow_id,
+                },
+                request_create_personal_email_request_params.RequestCreatePersonalEmailRequestParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=WorkflowResultWithMessage,
+        )
+
 
 class AsyncRequestResource(AsyncAPIResource):
     @cached_property
@@ -230,7 +335,7 @@ class AsyncRequestResource(AsyncAPIResource):
         camo: bool | Omit = omit,
         ephemeral_browser: bool | Omit = omit,
         stealth: bool | Omit = omit,
-        wait_until: Literal["load", "networkidle", "domcontentloaded", "commit"] | Omit = omit,
+        wait_until: WaitUntil | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -364,6 +469,105 @@ class AsyncRequestResource(AsyncAPIResource):
             cast_to=WorkflowResultWithMessage,
         )
 
+    async def create_personal_email_request(
+        self,
+        *,
+        person_name: str,
+        additional_context: Optional[str] | Omit = omit,
+        camo: bool | Omit = omit,
+        company_name: Optional[str] | Omit = omit,
+        job_title: Optional[str] | Omit = omit,
+        known_websites: Optional[SequenceNotStr[str]] | Omit = omit,
+        linkedin_url: Optional[str] | Omit = omit,
+        location: Optional[str] | Omit = omit,
+        max_steps: Optional[int] | Omit = omit,
+        n_pages: int | Omit = omit,
+        n_search_engine_links: int | Omit = omit,
+        proxy_password: Optional[str] | Omit = omit,
+        proxy_url: Optional[str] | Omit = omit,
+        proxy_username: Optional[str] | Omit = omit,
+        search_engine: Literal["duckduckgo", "google", "bing"] | Omit = omit,
+        workflow_id: Optional[str] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> WorkflowResultWithMessage:
+        """
+        Make a request to temporal worker
+
+        Args:
+          person_name: The name of the person to find email for
+
+          additional_context: Any additional context that might help find the person's email
+
+          camo: Whether to use CAMO for scraping
+
+          company_name: Optional company name associated with the person
+
+          job_title: Optional job title of the person
+
+          known_websites: Optional list of websites associated with the person
+
+          linkedin_url: Optional LinkedIn URL of the person
+
+          location: Optional location (city, state) of the person
+
+          max_steps: Maximum number of steps the agent can take
+
+          n_pages: Number of pages to visit while searching for email
+
+          n_search_engine_links: Number of search engine results to explore
+
+          proxy_password: Optional proxy password
+
+          proxy_url: Optional proxy URL to use for web requests
+
+          proxy_username: Optional proxy username
+
+          search_engine: Search engine to use for finding email
+
+          workflow_id: Optional workflow ID for tracking
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/workflows/request/personal-email",
+            body=await async_maybe_transform(
+                {
+                    "person_name": person_name,
+                    "additional_context": additional_context,
+                    "camo": camo,
+                    "company_name": company_name,
+                    "job_title": job_title,
+                    "known_websites": known_websites,
+                    "linkedin_url": linkedin_url,
+                    "location": location,
+                    "max_steps": max_steps,
+                    "n_pages": n_pages,
+                    "n_search_engine_links": n_search_engine_links,
+                    "proxy_password": proxy_password,
+                    "proxy_url": proxy_url,
+                    "proxy_username": proxy_username,
+                    "search_engine": search_engine,
+                    "workflow_id": workflow_id,
+                },
+                request_create_personal_email_request_params.RequestCreatePersonalEmailRequestParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=WorkflowResultWithMessage,
+        )
+
 
 class RequestResourceWithRawResponse:
     def __init__(self, request: RequestResource) -> None:
@@ -374,6 +578,9 @@ class RequestResourceWithRawResponse:
         )
         self.create_business_owner = to_raw_response_wrapper(
             request.create_business_owner,
+        )
+        self.create_personal_email_request = to_raw_response_wrapper(
+            request.create_personal_email_request,
         )
 
     @cached_property
@@ -391,6 +598,9 @@ class AsyncRequestResourceWithRawResponse:
         self.create_business_owner = async_to_raw_response_wrapper(
             request.create_business_owner,
         )
+        self.create_personal_email_request = async_to_raw_response_wrapper(
+            request.create_personal_email_request,
+        )
 
     @cached_property
     def mass(self) -> AsyncMassResourceWithRawResponse:
@@ -407,6 +617,9 @@ class RequestResourceWithStreamingResponse:
         self.create_business_owner = to_streamed_response_wrapper(
             request.create_business_owner,
         )
+        self.create_personal_email_request = to_streamed_response_wrapper(
+            request.create_personal_email_request,
+        )
 
     @cached_property
     def mass(self) -> MassResourceWithStreamingResponse:
@@ -422,6 +635,9 @@ class AsyncRequestResourceWithStreamingResponse:
         )
         self.create_business_owner = async_to_streamed_response_wrapper(
             request.create_business_owner,
+        )
+        self.create_personal_email_request = async_to_streamed_response_wrapper(
+            request.create_personal_email_request,
         )
 
     @cached_property
