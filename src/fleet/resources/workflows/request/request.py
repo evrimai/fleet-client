@@ -27,12 +27,10 @@ from ...._response import (
 )
 from ...._base_client import make_request_options
 from ....types.workflows import (
-    WaitUntil,
     request_create_params,
     request_create_business_owner_params,
     request_create_personal_email_request_params,
 )
-from ....types.workflows.wait_until import WaitUntil
 from ....types.workflows.request_create_response import RequestCreateResponse
 from ....types.workflows.request.workflow_result_with_message import WorkflowResultWithMessage
 
@@ -70,7 +68,7 @@ class RequestResource(SyncAPIResource):
         camo: bool | Omit = omit,
         ephemeral_browser: bool | Omit = omit,
         stealth: bool | Omit = omit,
-        wait_until: WaitUntil | Omit = omit,
+        wait_until: Literal["load", "networkidle", "domcontentloaded", "commit"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -335,7 +333,7 @@ class AsyncRequestResource(AsyncAPIResource):
         camo: bool | Omit = omit,
         ephemeral_browser: bool | Omit = omit,
         stealth: bool | Omit = omit,
-        wait_until: WaitUntil | Omit = omit,
+        wait_until: Literal["load", "networkidle", "domcontentloaded", "commit"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
