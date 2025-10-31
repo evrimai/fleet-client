@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.9.0 (2025-10-31)
+
+Full Changelog: [v0.8.0...v0.9.0](https://github.com/evrimai/fleet-client/compare/v0.8.0...v0.9.0)
+
+### Features
+
+* **api:** api update ([51584d2](https://github.com/evrimai/fleet-client/commit/51584d2fd754afcddcf6655ff67bc761fea45a51))
+* **api:** manual updates ([375ffb9](https://github.com/evrimai/fleet-client/commit/375ffb99c18461572a4aebf1eb26028cb786672f))
+
+
+### Bug Fixes
+
+* **client:** close streams without requiring full consumption ([ddfceb0](https://github.com/evrimai/fleet-client/commit/ddfceb02c2d1bd42a7444c59ed42f8b28c9c70c7))
+
 ## 0.8.0 (2025-10-23)
 
 Full Changelog: [v0.7.0...v0.8.0](https://github.com/evrimai/fleet-client/compare/v0.7.0...v0.8.0)
