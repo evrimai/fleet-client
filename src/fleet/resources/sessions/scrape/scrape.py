@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing_extensions import Literal
+
 import httpx
 
 from .async_ import (
@@ -32,8 +34,6 @@ from .browser_strategy import (
     AsyncBrowserStrategyResourceWithStreamingResponse,
 )
 from ....types.sessions import scrape_page_params, scrape_cleanup_jobs_params
-from ....types.workflows import WaitUntil
-from ....types.workflows.wait_until import WaitUntil
 from ....types.sessions.scrape_cleanup_jobs_response import ScrapeCleanupJobsResponse
 from ....types.sessions.scrape_get_browser_stats_response import ScrapeGetBrowserStatsResponse
 
@@ -148,7 +148,7 @@ class ScrapeResource(SyncAPIResource):
         session_id: str,
         *,
         url: str,
-        wait_until: WaitUntil | Omit = omit,
+        wait_until: Literal["load", "networkidle", "domcontentloaded", "commit"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -294,7 +294,7 @@ class AsyncScrapeResource(AsyncAPIResource):
         session_id: str,
         *,
         url: str,
-        wait_until: WaitUntil | Omit = omit,
+        wait_until: Literal["load", "networkidle", "domcontentloaded", "commit"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
