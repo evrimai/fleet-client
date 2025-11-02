@@ -3,9 +3,10 @@
 from __future__ import annotations
 
 from typing import Optional
-from typing_extensions import Literal, Required, TypedDict
+from typing_extensions import Required, TypedDict
 
 from ..._types import SequenceNotStr
+from .search_engine import SearchEngine
 
 __all__ = ["RequestCreatePersonalEmailRequestParams"]
 
@@ -53,7 +54,7 @@ class RequestCreatePersonalEmailRequestParams(TypedDict, total=False):
     proxy_username: Optional[str]
     """Optional proxy username"""
 
-    search_engine: Literal["duckduckgo", "google", "bing"]
+    search_engine: SearchEngine
     """Search engine to use for finding email"""
 
     workflow_id: Optional[str]
