@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from typing import Optional
+from typing_extensions import Literal
 
 import httpx
 
@@ -26,13 +27,11 @@ from ...._response import (
 )
 from ...._base_client import make_request_options
 from ....types.workflows import (
-    WaitUntil,
     SearchEngine,
     request_create_params,
     request_create_business_owner_params,
     request_create_personal_email_request_params,
 )
-from ....types.workflows.wait_until import WaitUntil
 from ....types.workflows.search_engine import SearchEngine
 from ....types.workflows.request_create_response import RequestCreateResponse
 from ....types.workflows.request.workflow_result_with_message import WorkflowResultWithMessage
@@ -68,6 +67,7 @@ class RequestResource(SyncAPIResource):
         self,
         *,
         url: str,
+        agentic: bool | Omit = omit,
         camo: bool | Omit = omit,
         enable_xvfb: bool | Omit = omit,
         ephemeral_browser: bool | Omit = omit,
@@ -75,7 +75,7 @@ class RequestResource(SyncAPIResource):
         proxy_url: Optional[str] | Omit = omit,
         proxy_username: Optional[str] | Omit = omit,
         stealth: bool | Omit = omit,
-        wait_until: WaitUntil | Omit = omit,
+        wait_until: Literal["load", "networkidle", "domcontentloaded", "commit"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -100,6 +100,7 @@ class RequestResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "url": url,
+                    "agentic": agentic,
                     "camo": camo,
                     "enable_xvfb": enable_xvfb,
                     "ephemeral_browser": ephemeral_browser,
@@ -341,6 +342,7 @@ class AsyncRequestResource(AsyncAPIResource):
         self,
         *,
         url: str,
+        agentic: bool | Omit = omit,
         camo: bool | Omit = omit,
         enable_xvfb: bool | Omit = omit,
         ephemeral_browser: bool | Omit = omit,
@@ -348,7 +350,7 @@ class AsyncRequestResource(AsyncAPIResource):
         proxy_url: Optional[str] | Omit = omit,
         proxy_username: Optional[str] | Omit = omit,
         stealth: bool | Omit = omit,
-        wait_until: WaitUntil | Omit = omit,
+        wait_until: Literal["load", "networkidle", "domcontentloaded", "commit"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -373,6 +375,7 @@ class AsyncRequestResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "url": url,
+                    "agentic": agentic,
                     "camo": camo,
                     "enable_xvfb": enable_xvfb,
                     "ephemeral_browser": ephemeral_browser,
