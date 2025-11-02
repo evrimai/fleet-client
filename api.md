@@ -22,7 +22,7 @@ Methods:
 Types:
 
 ```python
-from fleet.types.workflows import WaitUntil, RequestCreateResponse
+from fleet.types.workflows import SearchEngine, WaitUntil, RequestCreateResponse
 ```
 
 Methods:

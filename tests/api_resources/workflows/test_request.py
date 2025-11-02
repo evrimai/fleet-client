@@ -34,7 +34,11 @@ class TestRequest:
         request = client.workflows.request.create(
             url="url",
             camo=True,
+            enable_xvfb=True,
             ephemeral_browser=True,
+            proxy_password="proxy_password",
+            proxy_url="proxy_url",
+            proxy_username="proxy_username",
             stealth=True,
             wait_until="load",
         )
@@ -199,7 +203,11 @@ class TestAsyncRequest:
         request = await async_client.workflows.request.create(
             url="url",
             camo=True,
+            enable_xvfb=True,
             ephemeral_browser=True,
+            proxy_password="proxy_password",
+            proxy_url="proxy_url",
+            proxy_username="proxy_username",
             stealth=True,
             wait_until="load",
         )

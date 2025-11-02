@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import Optional
 from typing_extensions import Required, TypedDict
 
 from .wait_until import WaitUntil
@@ -14,7 +15,15 @@ class RequestCreateParams(TypedDict, total=False):
 
     camo: bool
 
+    enable_xvfb: bool
+
     ephemeral_browser: bool
+
+    proxy_password: Optional[str]
+
+    proxy_url: Optional[str]
+
+    proxy_username: Optional[str]
 
     stealth: bool
 
