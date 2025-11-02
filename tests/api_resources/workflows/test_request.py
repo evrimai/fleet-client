@@ -33,6 +33,7 @@ class TestRequest:
     def test_method_create_with_all_params(self, client: Fleet) -> None:
         request = client.workflows.request.create(
             url="url",
+            agentic=True,
             camo=True,
             enable_xvfb=True,
             ephemeral_browser=True,
@@ -202,6 +203,7 @@ class TestAsyncRequest:
     async def test_method_create_with_all_params(self, async_client: AsyncFleet) -> None:
         request = await async_client.workflows.request.create(
             url="url",
+            agentic=True,
             camo=True,
             enable_xvfb=True,
             ephemeral_browser=True,

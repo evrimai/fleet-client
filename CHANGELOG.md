@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.11.0 (2025-11-02)
+
+Full Changelog: [v0.10.0...v0.11.0](https://github.com/evrimai/fleet-client/compare/v0.10.0...v0.11.0)
+
+### Features
+
+* **api:** api update ([f0637a3](https://github.com/evrimai/fleet-client/commit/f0637a365e093974767a1df3e0ade58316cd22fd))
+
 ## 0.10.0 (2025-11-02)
 
 Full Changelog: [v0.9.0...v0.10.0](https://github.com/evrimai/fleet-client/compare/v0.9.0...v0.10.0)
