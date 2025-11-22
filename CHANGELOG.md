@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.12.0 (2025-11-22)
+
+Full Changelog: [v0.11.0...v0.12.0](https://github.com/evrimai/fleet-client/compare/v0.11.0...v0.12.0)
+
+### Features
+
+* **api:** api update ([a4c8a84](https://github.com/evrimai/fleet-client/commit/a4c8a846fc578f5fabb97debe19a4b55d35816d8))
+
+
+### Bug Fixes
+
+* compat with Python 3.14 ([7208cd4](https://github.com/evrimai/fleet-client/commit/7208cd4656f976d64989c83debce60994342ec3d))
+* **compat:** update signatures of `model_dump` and `model_dump_json` for Pydantic v1 ([ba78018](https://github.com/evrimai/fleet-client/commit/ba78018d50077bf7286fdf7e3b21bb1d66eb53c1))
+
+
+### Chores
+
+* add Python 3.14 classifier and testing ([f776bfd](https://github.com/evrimai/fleet-client/commit/f776bfdbe0973a7cde4ce5fb6504d3082ccc35ab))
+* **internal:** grammar fix (it's -&gt; its) ([2e6bb7d](https://github.com/evrimai/fleet-client/commit/2e6bb7dd451b99c701959826a8b94766cc89eaad))
+* **package:** drop Python 3.8 support ([8168e44](https://github.com/evrimai/fleet-client/commit/8168e445238b33a92f7af5dfdfeed08a3f416c7e))
+
 ## 0.11.0 (2025-11-02)
 
 Full Changelog: [v0.10.0...v0.11.0](https://github.com/evrimai/fleet-client/compare/v0.10.0...v0.11.0)
