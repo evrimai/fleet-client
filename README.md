@@ -3,7 +3,7 @@
 <!-- prettier-ignore -->
 [![PyPI version](https://img.shields.io/pypi/v/fleet-client.svg?label=pypi%20(stable))](https://pypi.org/project/fleet-client/)
 
-The Fleet Python library provides convenient access to the Fleet REST API from any Python 3.8+
+The Fleet Python library provides convenient access to the Fleet REST API from any Python 3.9+
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
@@ -77,6 +77,7 @@ pip install fleet-client[aiohttp]
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
 
 ```python
+import os
 import asyncio
 from fleet import DefaultAioHttpClient
 from fleet import AsyncFleet
@@ -84,7 +85,7 @@ from fleet import AsyncFleet
 
 async def main() -> None:
     async with AsyncFleet(
-        api_key="My API Key",
+        api_key=os.environ.get("FLEET_API_KEY"),  # This is the default and can be omitted
         http_client=DefaultAioHttpClient(),
     ) as client:
         response = await client.health.check()
@@ -368,7 +369,7 @@ print(fleet.__version__)
 
 ## Requirements
 
-Python 3.8 or higher.
+Python 3.9 or higher.
 
 ## Contributing
 

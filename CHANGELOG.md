@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.12.0 (2025-12-03)
+
+Full Changelog: [v0.11.0...v0.12.0](https://github.com/evrimai/fleet-client/compare/v0.11.0...v0.12.0)
+
+### Features
+
+* **api:** api update ([a4c8a84](https://github.com/evrimai/fleet-client/commit/a4c8a846fc578f5fabb97debe19a4b55d35816d8))
+
+
+### Bug Fixes
+
+* compat with Python 3.14 ([7208cd4](https://github.com/evrimai/fleet-client/commit/7208cd4656f976d64989c83debce60994342ec3d))
+* **compat:** update signatures of `model_dump` and `model_dump_json` for Pydantic v1 ([ba78018](https://github.com/evrimai/fleet-client/commit/ba78018d50077bf7286fdf7e3b21bb1d66eb53c1))
+* ensure streams are always closed ([5071426](https://github.com/evrimai/fleet-client/commit/5071426b949c763783ffe6a0748c3118790e1d48))
+
+
+### Chores
+
+* add Python 3.14 classifier and testing ([f776bfd](https://github.com/evrimai/fleet-client/commit/f776bfdbe0973a7cde4ce5fb6504d3082ccc35ab))
+* **deps:** mypy 1.18.1 has a regression, pin to 1.17 ([b311753](https://github.com/evrimai/fleet-client/commit/b311753843e851a06002909fbcb115b57842c12a))
+* **docs:** use environment variables for authentication in code snippets ([f462dbc](https://github.com/evrimai/fleet-client/commit/f462dbc8e6fa8ed3654e018a1ed03c14d89fba65))
+* **internal:** grammar fix (it's -&gt; its) ([2e6bb7d](https://github.com/evrimai/fleet-client/commit/2e6bb7dd451b99c701959826a8b94766cc89eaad))
+* **package:** drop Python 3.8 support ([8168e44](https://github.com/evrimai/fleet-client/commit/8168e445238b33a92f7af5dfdfeed08a3f416c7e))
+* update lockfile ([3024bbc](https://github.com/evrimai/fleet-client/commit/3024bbc7d93f3154d44b6ba52838edc7320dfbc9))
+
 ## 0.11.0 (2025-11-02)
 
 Full Changelog: [v0.10.0...v0.11.0](https://github.com/evrimai/fleet-client/compare/v0.10.0...v0.11.0)
