@@ -8,6 +8,8 @@ __all__ = ["VncSession"]
 
 
 class VncSession(BaseModel):
+    """VNC session information from aggregator."""
+
     browser_id: str
 
     created_at: float

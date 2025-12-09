@@ -8,6 +8,8 @@ __all__ = ["BrowserConfigurationParam"]
 
 
 class BrowserConfigurationParam(TypedDict, total=False):
+    """Browser configuration."""
+
     camo: bool
 
     headless: bool
