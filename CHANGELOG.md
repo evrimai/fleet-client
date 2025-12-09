@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.13.0 (2025-12-09)
+
+Full Changelog: [v0.12.0...v0.13.0](https://github.com/evrimai/fleet-client/compare/v0.12.0...v0.13.0)
+
+### Features
+
+* **api:** api update ([a255932](https://github.com/evrimai/fleet-client/commit/a25593211cd94d196d67f74c3c99bdd5cfb698c8))
+* **api:** api update ([930bbde](https://github.com/evrimai/fleet-client/commit/930bbdea7c63924ce121241d388aec24774e1c5d))
+
+
+### Bug Fixes
+
+* **types:** allow pyright to infer TypedDict types within SequenceNotStr ([23f42b6](https://github.com/evrimai/fleet-client/commit/23f42b615ba4b6a3daaa218df417981c73e407ac))
+
+
+### Chores
+
+* add missing docstrings ([736494d](https://github.com/evrimai/fleet-client/commit/736494d0437e8b474aafd91e522aeadcbb735d55))
+
 ## 0.12.0 (2025-12-03)
 
 Full Changelog: [v0.11.0...v0.12.0](https://github.com/evrimai/fleet-client/compare/v0.11.0...v0.12.0)
