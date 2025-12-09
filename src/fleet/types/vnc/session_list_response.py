@@ -9,6 +9,8 @@ __all__ = ["SessionListResponse"]
 
 
 class SessionListResponse(BaseModel):
+    """Response from VNC discovery aggregator."""
+
     active_pods: int
 
     last_updated: float
