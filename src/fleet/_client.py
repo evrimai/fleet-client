@@ -82,7 +82,7 @@ class Fleet(SyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("FLEET_BASE_URL")
         if base_url is None:
-            base_url = f"/fleet"
+            base_url = f"https://fleet.evrim.ai/fleet"
 
         super().__init__(
             version=__version__,
@@ -274,7 +274,7 @@ class AsyncFleet(AsyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("FLEET_BASE_URL")
         if base_url is None:
-            base_url = f"/fleet"
+            base_url = f"https://fleet.evrim.ai/fleet"
 
         super().__init__(
             version=__version__,
