@@ -17,7 +17,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestWorkflows:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_describe(self, client: Fleet) -> None:
         workflow = client.workflows.describe(
@@ -25,7 +25,7 @@ class TestWorkflows:
         )
         assert_matches_type(WorkflowDescribeResponse, workflow, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_describe(self, client: Fleet) -> None:
         response = client.workflows.with_raw_response.describe(
@@ -37,7 +37,7 @@ class TestWorkflows:
         workflow = response.parse()
         assert_matches_type(WorkflowDescribeResponse, workflow, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_describe(self, client: Fleet) -> None:
         with client.workflows.with_streaming_response.describe(
@@ -51,7 +51,7 @@ class TestWorkflows:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_describe(self, client: Fleet) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `workflow_id` but received ''"):
@@ -59,7 +59,7 @@ class TestWorkflows:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_results(self, client: Fleet) -> None:
         workflow = client.workflows.results(
@@ -67,7 +67,7 @@ class TestWorkflows:
         )
         assert_matches_type(WorkflowResultsResponse, workflow, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_results(self, client: Fleet) -> None:
         response = client.workflows.with_raw_response.results(
@@ -79,7 +79,7 @@ class TestWorkflows:
         workflow = response.parse()
         assert_matches_type(WorkflowResultsResponse, workflow, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_results(self, client: Fleet) -> None:
         with client.workflows.with_streaming_response.results(
@@ -93,7 +93,7 @@ class TestWorkflows:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_results(self, client: Fleet) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `workflow_id` but received ''"):
@@ -107,7 +107,7 @@ class TestAsyncWorkflows:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_describe(self, async_client: AsyncFleet) -> None:
         workflow = await async_client.workflows.describe(
@@ -115,7 +115,7 @@ class TestAsyncWorkflows:
         )
         assert_matches_type(WorkflowDescribeResponse, workflow, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_describe(self, async_client: AsyncFleet) -> None:
         response = await async_client.workflows.with_raw_response.describe(
@@ -127,7 +127,7 @@ class TestAsyncWorkflows:
         workflow = await response.parse()
         assert_matches_type(WorkflowDescribeResponse, workflow, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_describe(self, async_client: AsyncFleet) -> None:
         async with async_client.workflows.with_streaming_response.describe(
@@ -141,7 +141,7 @@ class TestAsyncWorkflows:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_describe(self, async_client: AsyncFleet) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `workflow_id` but received ''"):
@@ -149,7 +149,7 @@ class TestAsyncWorkflows:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_results(self, async_client: AsyncFleet) -> None:
         workflow = await async_client.workflows.results(
@@ -157,7 +157,7 @@ class TestAsyncWorkflows:
         )
         assert_matches_type(WorkflowResultsResponse, workflow, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_results(self, async_client: AsyncFleet) -> None:
         response = await async_client.workflows.with_raw_response.results(
@@ -169,7 +169,7 @@ class TestAsyncWorkflows:
         workflow = await response.parse()
         assert_matches_type(WorkflowResultsResponse, workflow, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_results(self, async_client: AsyncFleet) -> None:
         async with async_client.workflows.with_streaming_response.results(
@@ -183,7 +183,7 @@ class TestAsyncWorkflows:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_results(self, async_client: AsyncFleet) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `workflow_id` but received ''"):
