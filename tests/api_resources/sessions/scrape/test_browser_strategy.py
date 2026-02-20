@@ -17,7 +17,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestBrowserStrategy:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_get(self, client: Fleet) -> None:
         browser_strategy = client.sessions.scrape.browser_strategy.get(
@@ -25,7 +25,7 @@ class TestBrowserStrategy:
         )
         assert_matches_type(Response, browser_strategy, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_get(self, client: Fleet) -> None:
         response = client.sessions.scrape.browser_strategy.with_raw_response.get(
@@ -37,7 +37,7 @@ class TestBrowserStrategy:
         browser_strategy = response.parse()
         assert_matches_type(Response, browser_strategy, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_get(self, client: Fleet) -> None:
         with client.sessions.scrape.browser_strategy.with_streaming_response.get(
@@ -51,7 +51,7 @@ class TestBrowserStrategy:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_get(self, client: Fleet) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
@@ -59,7 +59,7 @@ class TestBrowserStrategy:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_set(self, client: Fleet) -> None:
         browser_strategy = client.sessions.scrape.browser_strategy.set(
@@ -68,7 +68,7 @@ class TestBrowserStrategy:
         )
         assert_matches_type(Response, browser_strategy, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_set(self, client: Fleet) -> None:
         response = client.sessions.scrape.browser_strategy.with_raw_response.set(
@@ -81,7 +81,7 @@ class TestBrowserStrategy:
         browser_strategy = response.parse()
         assert_matches_type(Response, browser_strategy, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_set(self, client: Fleet) -> None:
         with client.sessions.scrape.browser_strategy.with_streaming_response.set(
@@ -96,7 +96,7 @@ class TestBrowserStrategy:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_set(self, client: Fleet) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
@@ -111,7 +111,7 @@ class TestAsyncBrowserStrategy:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_get(self, async_client: AsyncFleet) -> None:
         browser_strategy = await async_client.sessions.scrape.browser_strategy.get(
@@ -119,7 +119,7 @@ class TestAsyncBrowserStrategy:
         )
         assert_matches_type(Response, browser_strategy, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncFleet) -> None:
         response = await async_client.sessions.scrape.browser_strategy.with_raw_response.get(
@@ -131,7 +131,7 @@ class TestAsyncBrowserStrategy:
         browser_strategy = await response.parse()
         assert_matches_type(Response, browser_strategy, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncFleet) -> None:
         async with async_client.sessions.scrape.browser_strategy.with_streaming_response.get(
@@ -145,7 +145,7 @@ class TestAsyncBrowserStrategy:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_get(self, async_client: AsyncFleet) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
@@ -153,7 +153,7 @@ class TestAsyncBrowserStrategy:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_set(self, async_client: AsyncFleet) -> None:
         browser_strategy = await async_client.sessions.scrape.browser_strategy.set(
@@ -162,7 +162,7 @@ class TestAsyncBrowserStrategy:
         )
         assert_matches_type(Response, browser_strategy, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_set(self, async_client: AsyncFleet) -> None:
         response = await async_client.sessions.scrape.browser_strategy.with_raw_response.set(
@@ -175,7 +175,7 @@ class TestAsyncBrowserStrategy:
         browser_strategy = await response.parse()
         assert_matches_type(Response, browser_strategy, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_set(self, async_client: AsyncFleet) -> None:
         async with async_client.sessions.scrape.browser_strategy.with_streaming_response.set(
@@ -190,7 +190,7 @@ class TestAsyncBrowserStrategy:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_set(self, async_client: AsyncFleet) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
