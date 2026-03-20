@@ -5,6 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ..._types import Body, Query, Headers, NotGiven, not_given
+from ..._utils import path_template
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -78,7 +79,7 @@ class WorkflowsResource(SyncAPIResource):
         if not workflow_id:
             raise ValueError(f"Expected a non-empty value for `workflow_id` but received {workflow_id!r}")
         return self._get(
-            f"/workflows/describe/{workflow_id}",
+            path_template("/workflows/describe/{workflow_id}", workflow_id=workflow_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -111,7 +112,7 @@ class WorkflowsResource(SyncAPIResource):
         if not workflow_id:
             raise ValueError(f"Expected a non-empty value for `workflow_id` but received {workflow_id!r}")
         return self._get(
-            f"/workflows/results/{workflow_id}",
+            path_template("/workflows/results/{workflow_id}", workflow_id=workflow_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -169,7 +170,7 @@ class AsyncWorkflowsResource(AsyncAPIResource):
         if not workflow_id:
             raise ValueError(f"Expected a non-empty value for `workflow_id` but received {workflow_id!r}")
         return await self._get(
-            f"/workflows/describe/{workflow_id}",
+            path_template("/workflows/describe/{workflow_id}", workflow_id=workflow_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -202,7 +203,7 @@ class AsyncWorkflowsResource(AsyncAPIResource):
         if not workflow_id:
             raise ValueError(f"Expected a non-empty value for `workflow_id` but received {workflow_id!r}")
         return await self._get(
-            f"/workflows/results/{workflow_id}",
+            path_template("/workflows/results/{workflow_id}", workflow_id=workflow_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

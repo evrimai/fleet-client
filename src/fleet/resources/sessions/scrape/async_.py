@@ -7,7 +7,7 @@ from typing_extensions import Literal
 import httpx
 
 from ...._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ...._utils import maybe_transform, async_maybe_transform
+from ...._utils import path_template, maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import (
@@ -75,7 +75,7 @@ class AsyncResource(SyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return self._post(
-            f"/sessions/{session_id}/scrape/async",
+            path_template("/sessions/{session_id}/scrape/async", session_id=session_id),
             body=maybe_transform(
                 {
                     "url": url,
@@ -119,7 +119,7 @@ class AsyncResource(SyncAPIResource):
         if not job_id:
             raise ValueError(f"Expected a non-empty value for `job_id` but received {job_id!r}")
         return self._delete(
-            f"/sessions/{session_id}/scrape/async/{job_id}",
+            path_template("/sessions/{session_id}/scrape/async/{job_id}", session_id=session_id, job_id=job_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -155,7 +155,7 @@ class AsyncResource(SyncAPIResource):
         if not job_id:
             raise ValueError(f"Expected a non-empty value for `job_id` but received {job_id!r}")
         return self._get(
-            f"/sessions/{session_id}/scrape/async/{job_id}",
+            path_template("/sessions/{session_id}/scrape/async/{job_id}", session_id=session_id, job_id=job_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -188,7 +188,7 @@ class AsyncResource(SyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return self._get(
-            f"/sessions/{session_id}/scrape/async",
+            path_template("/sessions/{session_id}/scrape/async", session_id=session_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -245,7 +245,7 @@ class AsyncAsyncResource(AsyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return await self._post(
-            f"/sessions/{session_id}/scrape/async",
+            path_template("/sessions/{session_id}/scrape/async", session_id=session_id),
             body=await async_maybe_transform(
                 {
                     "url": url,
@@ -289,7 +289,7 @@ class AsyncAsyncResource(AsyncAPIResource):
         if not job_id:
             raise ValueError(f"Expected a non-empty value for `job_id` but received {job_id!r}")
         return await self._delete(
-            f"/sessions/{session_id}/scrape/async/{job_id}",
+            path_template("/sessions/{session_id}/scrape/async/{job_id}", session_id=session_id, job_id=job_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -325,7 +325,7 @@ class AsyncAsyncResource(AsyncAPIResource):
         if not job_id:
             raise ValueError(f"Expected a non-empty value for `job_id` but received {job_id!r}")
         return await self._get(
-            f"/sessions/{session_id}/scrape/async/{job_id}",
+            path_template("/sessions/{session_id}/scrape/async/{job_id}", session_id=session_id, job_id=job_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -358,7 +358,7 @@ class AsyncAsyncResource(AsyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return await self._get(
-            f"/sessions/{session_id}/scrape/async",
+            path_template("/sessions/{session_id}/scrape/async", session_id=session_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
