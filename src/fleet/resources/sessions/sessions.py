@@ -25,7 +25,7 @@ from .start import (
 )
 from ...types import session_create_params, session_visit_page_params
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from .responses import (
     ResponsesResource,
@@ -177,7 +177,7 @@ class SessionsResource(SyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return self._get(
-            f"/sessions/{session_id}",
+            path_template("/sessions/{session_id}", session_id=session_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -229,7 +229,7 @@ class SessionsResource(SyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return self._delete(
-            f"/sessions/{session_id}",
+            path_template("/sessions/{session_id}", session_id=session_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -264,7 +264,7 @@ class SessionsResource(SyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return self._post(
-            f"/sessions/{session_id}/visit",
+            path_template("/sessions/{session_id}/visit", session_id=session_id),
             body=maybe_transform(
                 {
                     "url": url,
@@ -413,7 +413,7 @@ class AsyncSessionsResource(AsyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return await self._get(
-            f"/sessions/{session_id}",
+            path_template("/sessions/{session_id}", session_id=session_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -465,7 +465,7 @@ class AsyncSessionsResource(AsyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return await self._delete(
-            f"/sessions/{session_id}",
+            path_template("/sessions/{session_id}", session_id=session_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -500,7 +500,7 @@ class AsyncSessionsResource(AsyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return await self._post(
-            f"/sessions/{session_id}/visit",
+            path_template("/sessions/{session_id}/visit", session_id=session_id),
             body=await async_maybe_transform(
                 {
                     "url": url,
