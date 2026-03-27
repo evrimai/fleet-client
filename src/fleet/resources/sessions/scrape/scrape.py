@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing_extensions import Literal
+
 import httpx
 
 from .async_ import (
@@ -13,7 +15,7 @@ from .async_ import (
     AsyncAsyncResourceWithStreamingResponse,
 )
 from ...._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ...._utils import maybe_transform, async_maybe_transform
+from ...._utils import path_template, maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import (
@@ -32,8 +34,6 @@ from .browser_strategy import (
     AsyncBrowserStrategyResourceWithStreamingResponse,
 )
 from ....types.sessions import scrape_page_params, scrape_cleanup_jobs_params
-from ....types.workflows import WaitUntil
-from ....types.workflows.wait_until import WaitUntil
 from ....types.sessions.scrape_cleanup_jobs_response import ScrapeCleanupJobsResponse
 from ....types.sessions.scrape_get_browser_stats_response import ScrapeGetBrowserStatsResponse
 
@@ -97,7 +97,7 @@ class ScrapeResource(SyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return self._post(
-            f"/sessions/{session_id}/scrape/cleanup",
+            path_template("/sessions/{session_id}/scrape/cleanup", session_id=session_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -136,7 +136,7 @@ class ScrapeResource(SyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return self._get(
-            f"/sessions/{session_id}/scrape/browser-stats",
+            path_template("/sessions/{session_id}/scrape/browser-stats", session_id=session_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -148,7 +148,7 @@ class ScrapeResource(SyncAPIResource):
         session_id: str,
         *,
         url: str,
-        wait_until: WaitUntil | Omit = omit,
+        wait_until: Literal["load", "networkidle", "domcontentloaded", "commit"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -171,7 +171,7 @@ class ScrapeResource(SyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return self._post(
-            f"/sessions/{session_id}/scrape",
+            path_template("/sessions/{session_id}/scrape", session_id=session_id),
             body=maybe_transform(
                 {
                     "url": url,
@@ -243,7 +243,7 @@ class AsyncScrapeResource(AsyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return await self._post(
-            f"/sessions/{session_id}/scrape/cleanup",
+            path_template("/sessions/{session_id}/scrape/cleanup", session_id=session_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -282,7 +282,7 @@ class AsyncScrapeResource(AsyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return await self._get(
-            f"/sessions/{session_id}/scrape/browser-stats",
+            path_template("/sessions/{session_id}/scrape/browser-stats", session_id=session_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -294,7 +294,7 @@ class AsyncScrapeResource(AsyncAPIResource):
         session_id: str,
         *,
         url: str,
-        wait_until: WaitUntil | Omit = omit,
+        wait_until: Literal["load", "networkidle", "domcontentloaded", "commit"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -317,7 +317,7 @@ class AsyncScrapeResource(AsyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return await self._post(
-            f"/sessions/{session_id}/scrape",
+            path_template("/sessions/{session_id}/scrape", session_id=session_id),
             body=await async_maybe_transform(
                 {
                     "url": url,

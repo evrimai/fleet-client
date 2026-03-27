@@ -1,5 +1,52 @@
 # Changelog
 
+## 0.13.0 (2026-03-27)
+
+Full Changelog: [v0.12.0...v0.13.0](https://github.com/evrimai/fleet-client/compare/v0.12.0...v0.13.0)
+
+### Features
+
+* **api:** api update ([0cff1ab](https://github.com/evrimai/fleet-client/commit/0cff1abab94baccb747fe7c93b22a3345e0da2e5))
+* **api:** api update ([f36d6b7](https://github.com/evrimai/fleet-client/commit/f36d6b79b5c43847654a49375ea67f85c26fd07d))
+* **api:** api update ([a255932](https://github.com/evrimai/fleet-client/commit/a25593211cd94d196d67f74c3c99bdd5cfb698c8))
+* **api:** api update ([930bbde](https://github.com/evrimai/fleet-client/commit/930bbdea7c63924ce121241d388aec24774e1c5d))
+* **api:** manual updates ([e110e16](https://github.com/evrimai/fleet-client/commit/e110e1629b9f7c14f848d73f22443f2a112a6b2e))
+* **client:** add custom JSON encoder for extended type support ([b12f4cf](https://github.com/evrimai/fleet-client/commit/b12f4cf8234dbe380527e80a9909e13889b3ee80))
+* **client:** add support for binary request streaming ([2bbd1ac](https://github.com/evrimai/fleet-client/commit/2bbd1ac0fe78029d434727ef17f34cb984c128c8))
+* **internal:** implement indices array format for query and form serialization ([53fbee9](https://github.com/evrimai/fleet-client/commit/53fbee972c5a480b85ec840e21e3c90c831da39a))
+
+
+### Bug Fixes
+
+* **deps:** bump minimum typing-extensions version ([9db556a](https://github.com/evrimai/fleet-client/commit/9db556a6bc9b5b9e2c76ed7c8d14e9f05c3aefa9))
+* **pydantic:** do not pass `by_alias` unless set ([7e5a198](https://github.com/evrimai/fleet-client/commit/7e5a198d7414e086680fd03a5d5dfb71c216e206))
+* sanitize endpoint path params ([a88f326](https://github.com/evrimai/fleet-client/commit/a88f326c5dec6d10c75320451d0277a8e65f3199))
+* **types:** allow pyright to infer TypedDict types within SequenceNotStr ([23f42b6](https://github.com/evrimai/fleet-client/commit/23f42b615ba4b6a3daaa218df417981c73e407ac))
+* use async_to_httpx_files in patch method ([ffad06e](https://github.com/evrimai/fleet-client/commit/ffad06e55e66e787730495a50d67ebb96280e5c3))
+
+
+### Chores
+
+* add missing docstrings ([736494d](https://github.com/evrimai/fleet-client/commit/736494d0437e8b474aafd91e522aeadcbb735d55))
+* **ci:** skip lint on metadata-only changes ([5989c91](https://github.com/evrimai/fleet-client/commit/5989c916bce654b7d858f91241190394fb6f78d5))
+* **ci:** skip uploading artifacts on stainless-internal branches ([559cf1b](https://github.com/evrimai/fleet-client/commit/559cf1b2abf5ab41424f8b5f93b5fd881d3ffa0a))
+* **ci:** upgrade `actions/github-script` ([0ca647c](https://github.com/evrimai/fleet-client/commit/0ca647c217605a9641c688c5edf00bd975c3e890))
+* format all `api.md` files ([c9380af](https://github.com/evrimai/fleet-client/commit/c9380afc68acf3eaf0f36b0d7f28a4d9af470bd2))
+* **internal:** add `--fix` argument to lint script ([d32039b](https://github.com/evrimai/fleet-client/commit/d32039bd846070e7afcf51d78b1da2e45b496136))
+* **internal:** add missing files argument to base client ([d1ac3d2](https://github.com/evrimai/fleet-client/commit/d1ac3d2bef5bbd4a9f330a46766cfd62d78d3541))
+* **internal:** add request options to SSE classes ([65e4b03](https://github.com/evrimai/fleet-client/commit/65e4b0314eaf94efc5ac568100fc030850dad76a))
+* **internal:** bump dependencies ([40b0e82](https://github.com/evrimai/fleet-client/commit/40b0e822038cf559af7a209b84cdbc0975df4241))
+* **internal:** codegen related update ([77f60cb](https://github.com/evrimai/fleet-client/commit/77f60cb97fd34fd42528c08a340d1f766420ab28))
+* **internal:** fix lint error on Python 3.14 ([92818ec](https://github.com/evrimai/fleet-client/commit/92818ec3d38ea49a62f9aa37a260273af0758209))
+* **internal:** make `test_proxy_environment_variables` more resilient ([3a01ba6](https://github.com/evrimai/fleet-client/commit/3a01ba677e2005d49c3e8eff656ca5ae87f75349))
+* **internal:** make `test_proxy_environment_variables` more resilient to env ([8a62159](https://github.com/evrimai/fleet-client/commit/8a62159e0a0cd23c1682b1979dd03ce426bc67ec))
+* **internal:** remove mock server code ([e15bf75](https://github.com/evrimai/fleet-client/commit/e15bf75b79e801b349340b3a48d1bbf4a912506f))
+* **internal:** tweak CI branches ([3abff28](https://github.com/evrimai/fleet-client/commit/3abff2882a75ed0bce211e13336e9d002d5cbf41))
+* **internal:** update `actions/checkout` version ([fbbe10e](https://github.com/evrimai/fleet-client/commit/fbbe10ef1dbd881f2cde06f2f6d94010e474883b))
+* **internal:** update gitignore ([fb28fa8](https://github.com/evrimai/fleet-client/commit/fb28fa8c75e687e848515b6eee27a0215db7ad10))
+* speedup initial import ([620c4e4](https://github.com/evrimai/fleet-client/commit/620c4e40630bdb35d5383b1a50b4fbf781127776))
+* update mock server docs ([19e2ac9](https://github.com/evrimai/fleet-client/commit/19e2ac9c3411e4c2d1f62534f0eb287f6ba3ef49))
+
 ## 0.12.0 (2025-12-03)
 
 Full Changelog: [v0.11.0...v0.12.0](https://github.com/evrimai/fleet-client/compare/v0.11.0...v0.12.0)

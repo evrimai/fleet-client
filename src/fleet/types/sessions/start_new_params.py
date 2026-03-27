@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import Optional
 from typing_extensions import Required, TypedDict
 
 from ..browser_configuration_param import BrowserConfigurationParam
@@ -22,10 +23,10 @@ class StartNewParams(TypedDict, total=False):
 
     n_responses_to_track: int
 
-    proxy_password: str
+    proxy_password: Optional[str]
 
-    proxy_url: str
+    proxy_url: Optional[str]
 
-    proxy_username: str
+    proxy_username: Optional[str]
 
-    vnc_password: str
+    vnc_password: Optional[str]

@@ -6,6 +6,8 @@ __all__ = ["SessionRetrieveResponse"]
 
 
 class SessionRetrieveResponse(BaseModel):
+    """VNC connection information for client."""
+
     active: bool
 
     browser_id: str

@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import os
-from typing import Any, Mapping
+from typing import TYPE_CHECKING, Any, Mapping
 from typing_extensions import Self, override
 
 import httpx
@@ -20,8 +20,8 @@ from ._types import (
     not_given,
 )
 from ._utils import is_given, get_async_library
+from ._compat import cached_property
 from ._version import __version__
-from .resources import health
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import FleetError, APIStatusError
 from ._base_client import (
@@ -29,21 +29,18 @@ from ._base_client import (
     SyncAPIClient,
     AsyncAPIClient,
 )
-from .resources.vnc import vnc
-from .resources.sessions import sessions
-from .resources.workflows import workflows
+
+if TYPE_CHECKING:
+    from .resources import vnc, health, sessions, workflows
+    from .resources.health import HealthResource, AsyncHealthResource
+    from .resources.vnc.vnc import VncResource, AsyncVncResource
+    from .resources.sessions.sessions import SessionsResource, AsyncSessionsResource
+    from .resources.workflows.workflows import WorkflowsResource, AsyncWorkflowsResource
 
 __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Fleet", "AsyncFleet", "Client", "AsyncClient"]
 
 
 class Fleet(SyncAPIClient):
-    health: health.HealthResource
-    workflows: workflows.WorkflowsResource
-    vnc: vnc.VncResource
-    sessions: sessions.SessionsResource
-    with_raw_response: FleetWithRawResponse
-    with_streaming_response: FleetWithStreamedResponse
-
     # client options
     api_key: str
 
@@ -85,7 +82,7 @@ class Fleet(SyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("FLEET_BASE_URL")
         if base_url is None:
-            base_url = f"/fleet"
+            base_url = f"https://fleet.evrim.ai/fleet"
 
         super().__init__(
             version=__version__,
@@ -98,12 +95,37 @@ class Fleet(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.health = health.HealthResource(self)
-        self.workflows = workflows.WorkflowsResource(self)
-        self.vnc = vnc.VncResource(self)
-        self.sessions = sessions.SessionsResource(self)
-        self.with_raw_response = FleetWithRawResponse(self)
-        self.with_streaming_response = FleetWithStreamedResponse(self)
+    @cached_property
+    def health(self) -> HealthResource:
+        from .resources.health import HealthResource
+
+        return HealthResource(self)
+
+    @cached_property
+    def workflows(self) -> WorkflowsResource:
+        from .resources.workflows import WorkflowsResource
+
+        return WorkflowsResource(self)
+
+    @cached_property
+    def vnc(self) -> VncResource:
+        from .resources.vnc import VncResource
+
+        return VncResource(self)
+
+    @cached_property
+    def sessions(self) -> SessionsResource:
+        from .resources.sessions import SessionsResource
+
+        return SessionsResource(self)
+
+    @cached_property
+    def with_raw_response(self) -> FleetWithRawResponse:
+        return FleetWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> FleetWithStreamedResponse:
+        return FleetWithStreamedResponse(self)
 
     @property
     @override
@@ -211,13 +233,6 @@ class Fleet(SyncAPIClient):
 
 
 class AsyncFleet(AsyncAPIClient):
-    health: health.AsyncHealthResource
-    workflows: workflows.AsyncWorkflowsResource
-    vnc: vnc.AsyncVncResource
-    sessions: sessions.AsyncSessionsResource
-    with_raw_response: AsyncFleetWithRawResponse
-    with_streaming_response: AsyncFleetWithStreamedResponse
-
     # client options
     api_key: str
 
@@ -259,7 +274,7 @@ class AsyncFleet(AsyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("FLEET_BASE_URL")
         if base_url is None:
-            base_url = f"/fleet"
+            base_url = f"https://fleet.evrim.ai/fleet"
 
         super().__init__(
             version=__version__,
@@ -272,12 +287,37 @@ class AsyncFleet(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.health = health.AsyncHealthResource(self)
-        self.workflows = workflows.AsyncWorkflowsResource(self)
-        self.vnc = vnc.AsyncVncResource(self)
-        self.sessions = sessions.AsyncSessionsResource(self)
-        self.with_raw_response = AsyncFleetWithRawResponse(self)
-        self.with_streaming_response = AsyncFleetWithStreamedResponse(self)
+    @cached_property
+    def health(self) -> AsyncHealthResource:
+        from .resources.health import AsyncHealthResource
+
+        return AsyncHealthResource(self)
+
+    @cached_property
+    def workflows(self) -> AsyncWorkflowsResource:
+        from .resources.workflows import AsyncWorkflowsResource
+
+        return AsyncWorkflowsResource(self)
+
+    @cached_property
+    def vnc(self) -> AsyncVncResource:
+        from .resources.vnc import AsyncVncResource
+
+        return AsyncVncResource(self)
+
+    @cached_property
+    def sessions(self) -> AsyncSessionsResource:
+        from .resources.sessions import AsyncSessionsResource
+
+        return AsyncSessionsResource(self)
+
+    @cached_property
+    def with_raw_response(self) -> AsyncFleetWithRawResponse:
+        return AsyncFleetWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AsyncFleetWithStreamedResponse:
+        return AsyncFleetWithStreamedResponse(self)
 
     @property
     @override
@@ -385,35 +425,127 @@ class AsyncFleet(AsyncAPIClient):
 
 
 class FleetWithRawResponse:
+    _client: Fleet
+
     def __init__(self, client: Fleet) -> None:
-        self.health = health.HealthResourceWithRawResponse(client.health)
-        self.workflows = workflows.WorkflowsResourceWithRawResponse(client.workflows)
-        self.vnc = vnc.VncResourceWithRawResponse(client.vnc)
-        self.sessions = sessions.SessionsResourceWithRawResponse(client.sessions)
+        self._client = client
+
+    @cached_property
+    def health(self) -> health.HealthResourceWithRawResponse:
+        from .resources.health import HealthResourceWithRawResponse
+
+        return HealthResourceWithRawResponse(self._client.health)
+
+    @cached_property
+    def workflows(self) -> workflows.WorkflowsResourceWithRawResponse:
+        from .resources.workflows import WorkflowsResourceWithRawResponse
+
+        return WorkflowsResourceWithRawResponse(self._client.workflows)
+
+    @cached_property
+    def vnc(self) -> vnc.VncResourceWithRawResponse:
+        from .resources.vnc import VncResourceWithRawResponse
+
+        return VncResourceWithRawResponse(self._client.vnc)
+
+    @cached_property
+    def sessions(self) -> sessions.SessionsResourceWithRawResponse:
+        from .resources.sessions import SessionsResourceWithRawResponse
+
+        return SessionsResourceWithRawResponse(self._client.sessions)
 
 
 class AsyncFleetWithRawResponse:
+    _client: AsyncFleet
+
     def __init__(self, client: AsyncFleet) -> None:
-        self.health = health.AsyncHealthResourceWithRawResponse(client.health)
-        self.workflows = workflows.AsyncWorkflowsResourceWithRawResponse(client.workflows)
-        self.vnc = vnc.AsyncVncResourceWithRawResponse(client.vnc)
-        self.sessions = sessions.AsyncSessionsResourceWithRawResponse(client.sessions)
+        self._client = client
+
+    @cached_property
+    def health(self) -> health.AsyncHealthResourceWithRawResponse:
+        from .resources.health import AsyncHealthResourceWithRawResponse
+
+        return AsyncHealthResourceWithRawResponse(self._client.health)
+
+    @cached_property
+    def workflows(self) -> workflows.AsyncWorkflowsResourceWithRawResponse:
+        from .resources.workflows import AsyncWorkflowsResourceWithRawResponse
+
+        return AsyncWorkflowsResourceWithRawResponse(self._client.workflows)
+
+    @cached_property
+    def vnc(self) -> vnc.AsyncVncResourceWithRawResponse:
+        from .resources.vnc import AsyncVncResourceWithRawResponse
+
+        return AsyncVncResourceWithRawResponse(self._client.vnc)
+
+    @cached_property
+    def sessions(self) -> sessions.AsyncSessionsResourceWithRawResponse:
+        from .resources.sessions import AsyncSessionsResourceWithRawResponse
+
+        return AsyncSessionsResourceWithRawResponse(self._client.sessions)
 
 
 class FleetWithStreamedResponse:
+    _client: Fleet
+
     def __init__(self, client: Fleet) -> None:
-        self.health = health.HealthResourceWithStreamingResponse(client.health)
-        self.workflows = workflows.WorkflowsResourceWithStreamingResponse(client.workflows)
-        self.vnc = vnc.VncResourceWithStreamingResponse(client.vnc)
-        self.sessions = sessions.SessionsResourceWithStreamingResponse(client.sessions)
+        self._client = client
+
+    @cached_property
+    def health(self) -> health.HealthResourceWithStreamingResponse:
+        from .resources.health import HealthResourceWithStreamingResponse
+
+        return HealthResourceWithStreamingResponse(self._client.health)
+
+    @cached_property
+    def workflows(self) -> workflows.WorkflowsResourceWithStreamingResponse:
+        from .resources.workflows import WorkflowsResourceWithStreamingResponse
+
+        return WorkflowsResourceWithStreamingResponse(self._client.workflows)
+
+    @cached_property
+    def vnc(self) -> vnc.VncResourceWithStreamingResponse:
+        from .resources.vnc import VncResourceWithStreamingResponse
+
+        return VncResourceWithStreamingResponse(self._client.vnc)
+
+    @cached_property
+    def sessions(self) -> sessions.SessionsResourceWithStreamingResponse:
+        from .resources.sessions import SessionsResourceWithStreamingResponse
+
+        return SessionsResourceWithStreamingResponse(self._client.sessions)
 
 
 class AsyncFleetWithStreamedResponse:
+    _client: AsyncFleet
+
     def __init__(self, client: AsyncFleet) -> None:
-        self.health = health.AsyncHealthResourceWithStreamingResponse(client.health)
-        self.workflows = workflows.AsyncWorkflowsResourceWithStreamingResponse(client.workflows)
-        self.vnc = vnc.AsyncVncResourceWithStreamingResponse(client.vnc)
-        self.sessions = sessions.AsyncSessionsResourceWithStreamingResponse(client.sessions)
+        self._client = client
+
+    @cached_property
+    def health(self) -> health.AsyncHealthResourceWithStreamingResponse:
+        from .resources.health import AsyncHealthResourceWithStreamingResponse
+
+        return AsyncHealthResourceWithStreamingResponse(self._client.health)
+
+    @cached_property
+    def workflows(self) -> workflows.AsyncWorkflowsResourceWithStreamingResponse:
+        from .resources.workflows import AsyncWorkflowsResourceWithStreamingResponse
+
+        return AsyncWorkflowsResourceWithStreamingResponse(self._client.workflows)
+
+    @cached_property
+    def vnc(self) -> vnc.AsyncVncResourceWithStreamingResponse:
+        from .resources.vnc import AsyncVncResourceWithStreamingResponse
+
+        return AsyncVncResourceWithStreamingResponse(self._client.vnc)
+
+    @cached_property
+    def sessions(self) -> sessions.AsyncSessionsResourceWithStreamingResponse:
+        from .resources.sessions import AsyncSessionsResourceWithStreamingResponse
+
+        return AsyncSessionsResourceWithStreamingResponse(self._client.sessions)
 
 
 Client = Fleet

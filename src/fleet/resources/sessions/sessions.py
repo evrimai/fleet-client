@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+from typing import Optional
+from typing_extensions import Literal
+
 import httpx
 
 from .page import (
@@ -22,7 +25,7 @@ from .start import (
 )
 from ...types import session_create_params, session_visit_page_params
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from .responses import (
     ResponsesResource,
@@ -48,8 +51,6 @@ from .scrape.scrape import (
     AsyncScrapeResourceWithStreamingResponse,
 )
 from ..._base_client import make_request_options
-from ...types.workflows import WaitUntil
-from ...types.workflows.wait_until import WaitUntil
 from ...types.session_list_response import SessionListResponse
 from ...types.session_create_response import SessionCreateResponse
 from ...types.session_delete_response import SessionDeleteResponse
@@ -104,10 +105,10 @@ class SessionsResource(SyncAPIResource):
         agentic: bool | Omit = omit,
         enable_xvfb: bool | Omit = omit,
         n_responses_to_track: int | Omit = omit,
-        proxy_password: str | Omit = omit,
-        proxy_url: str | Omit = omit,
-        proxy_username: str | Omit = omit,
-        vnc_password: str | Omit = omit,
+        proxy_password: Optional[str] | Omit = omit,
+        proxy_url: Optional[str] | Omit = omit,
+        proxy_username: Optional[str] | Omit = omit,
+        vnc_password: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -176,7 +177,7 @@ class SessionsResource(SyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return self._get(
-            f"/sessions/{session_id}",
+            path_template("/sessions/{session_id}", session_id=session_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -228,7 +229,7 @@ class SessionsResource(SyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return self._delete(
-            f"/sessions/{session_id}",
+            path_template("/sessions/{session_id}", session_id=session_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -240,7 +241,7 @@ class SessionsResource(SyncAPIResource):
         session_id: str,
         *,
         url: str,
-        wait_until: WaitUntil | Omit = omit,
+        wait_until: Literal["load", "networkidle", "domcontentloaded", "commit"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -263,7 +264,7 @@ class SessionsResource(SyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return self._post(
-            f"/sessions/{session_id}/visit",
+            path_template("/sessions/{session_id}/visit", session_id=session_id),
             body=maybe_transform(
                 {
                     "url": url,
@@ -340,10 +341,10 @@ class AsyncSessionsResource(AsyncAPIResource):
         agentic: bool | Omit = omit,
         enable_xvfb: bool | Omit = omit,
         n_responses_to_track: int | Omit = omit,
-        proxy_password: str | Omit = omit,
-        proxy_url: str | Omit = omit,
-        proxy_username: str | Omit = omit,
-        vnc_password: str | Omit = omit,
+        proxy_password: Optional[str] | Omit = omit,
+        proxy_url: Optional[str] | Omit = omit,
+        proxy_username: Optional[str] | Omit = omit,
+        vnc_password: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -412,7 +413,7 @@ class AsyncSessionsResource(AsyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return await self._get(
-            f"/sessions/{session_id}",
+            path_template("/sessions/{session_id}", session_id=session_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -464,7 +465,7 @@ class AsyncSessionsResource(AsyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return await self._delete(
-            f"/sessions/{session_id}",
+            path_template("/sessions/{session_id}", session_id=session_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -476,7 +477,7 @@ class AsyncSessionsResource(AsyncAPIResource):
         session_id: str,
         *,
         url: str,
-        wait_until: WaitUntil | Omit = omit,
+        wait_until: Literal["load", "networkidle", "domcontentloaded", "commit"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -499,7 +500,7 @@ class AsyncSessionsResource(AsyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return await self._post(
-            f"/sessions/{session_id}/visit",
+            path_template("/sessions/{session_id}/visit", session_id=session_id),
             body=await async_maybe_transform(
                 {
                     "url": url,

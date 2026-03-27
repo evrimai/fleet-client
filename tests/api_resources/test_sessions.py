@@ -24,7 +24,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestSessions:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create(self, client: Fleet) -> None:
         session = client.sessions.create(
@@ -32,7 +32,7 @@ class TestSessions:
         )
         assert_matches_type(SessionCreateResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create_with_all_params(self, client: Fleet) -> None:
         session = client.sessions.create(
@@ -53,7 +53,7 @@ class TestSessions:
         )
         assert_matches_type(SessionCreateResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: Fleet) -> None:
         response = client.sessions.with_raw_response.create(
@@ -65,7 +65,7 @@ class TestSessions:
         session = response.parse()
         assert_matches_type(SessionCreateResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_create(self, client: Fleet) -> None:
         with client.sessions.with_streaming_response.create(
@@ -79,7 +79,7 @@ class TestSessions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_retrieve(self, client: Fleet) -> None:
         session = client.sessions.retrieve(
@@ -87,7 +87,7 @@ class TestSessions:
         )
         assert_matches_type(SessionRetrieveResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_retrieve(self, client: Fleet) -> None:
         response = client.sessions.with_raw_response.retrieve(
@@ -99,7 +99,7 @@ class TestSessions:
         session = response.parse()
         assert_matches_type(SessionRetrieveResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_retrieve(self, client: Fleet) -> None:
         with client.sessions.with_streaming_response.retrieve(
@@ -113,7 +113,7 @@ class TestSessions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_retrieve(self, client: Fleet) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
@@ -121,13 +121,13 @@ class TestSessions:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list(self, client: Fleet) -> None:
         session = client.sessions.list()
         assert_matches_type(SessionListResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: Fleet) -> None:
         response = client.sessions.with_raw_response.list()
@@ -137,7 +137,7 @@ class TestSessions:
         session = response.parse()
         assert_matches_type(SessionListResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: Fleet) -> None:
         with client.sessions.with_streaming_response.list() as response:
@@ -149,7 +149,7 @@ class TestSessions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_delete(self, client: Fleet) -> None:
         session = client.sessions.delete(
@@ -157,7 +157,7 @@ class TestSessions:
         )
         assert_matches_type(SessionDeleteResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_delete(self, client: Fleet) -> None:
         response = client.sessions.with_raw_response.delete(
@@ -169,7 +169,7 @@ class TestSessions:
         session = response.parse()
         assert_matches_type(SessionDeleteResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_delete(self, client: Fleet) -> None:
         with client.sessions.with_streaming_response.delete(
@@ -183,7 +183,7 @@ class TestSessions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_delete(self, client: Fleet) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
@@ -191,7 +191,7 @@ class TestSessions:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_visit_page(self, client: Fleet) -> None:
         session = client.sessions.visit_page(
@@ -200,7 +200,7 @@ class TestSessions:
         )
         assert_matches_type(SessionVisitPageResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_visit_page_with_all_params(self, client: Fleet) -> None:
         session = client.sessions.visit_page(
@@ -210,7 +210,7 @@ class TestSessions:
         )
         assert_matches_type(SessionVisitPageResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_visit_page(self, client: Fleet) -> None:
         response = client.sessions.with_raw_response.visit_page(
@@ -223,7 +223,7 @@ class TestSessions:
         session = response.parse()
         assert_matches_type(SessionVisitPageResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_visit_page(self, client: Fleet) -> None:
         with client.sessions.with_streaming_response.visit_page(
@@ -238,7 +238,7 @@ class TestSessions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_visit_page(self, client: Fleet) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
@@ -247,13 +247,13 @@ class TestSessions:
                 url="url",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_warm_up(self, client: Fleet) -> None:
         session = client.sessions.warm_up()
         assert_matches_type(SessionWarmUpResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_warm_up(self, client: Fleet) -> None:
         response = client.sessions.with_raw_response.warm_up()
@@ -263,7 +263,7 @@ class TestSessions:
         session = response.parse()
         assert_matches_type(SessionWarmUpResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_warm_up(self, client: Fleet) -> None:
         with client.sessions.with_streaming_response.warm_up() as response:
@@ -281,7 +281,7 @@ class TestAsyncSessions:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create(self, async_client: AsyncFleet) -> None:
         session = await async_client.sessions.create(
@@ -289,7 +289,7 @@ class TestAsyncSessions:
         )
         assert_matches_type(SessionCreateResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncFleet) -> None:
         session = await async_client.sessions.create(
@@ -310,7 +310,7 @@ class TestAsyncSessions:
         )
         assert_matches_type(SessionCreateResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncFleet) -> None:
         response = await async_client.sessions.with_raw_response.create(
@@ -322,7 +322,7 @@ class TestAsyncSessions:
         session = await response.parse()
         assert_matches_type(SessionCreateResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncFleet) -> None:
         async with async_client.sessions.with_streaming_response.create(
@@ -336,7 +336,7 @@ class TestAsyncSessions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncFleet) -> None:
         session = await async_client.sessions.retrieve(
@@ -344,7 +344,7 @@ class TestAsyncSessions:
         )
         assert_matches_type(SessionRetrieveResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncFleet) -> None:
         response = await async_client.sessions.with_raw_response.retrieve(
@@ -356,7 +356,7 @@ class TestAsyncSessions:
         session = await response.parse()
         assert_matches_type(SessionRetrieveResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncFleet) -> None:
         async with async_client.sessions.with_streaming_response.retrieve(
@@ -370,7 +370,7 @@ class TestAsyncSessions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_retrieve(self, async_client: AsyncFleet) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
@@ -378,13 +378,13 @@ class TestAsyncSessions:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncFleet) -> None:
         session = await async_client.sessions.list()
         assert_matches_type(SessionListResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncFleet) -> None:
         response = await async_client.sessions.with_raw_response.list()
@@ -394,7 +394,7 @@ class TestAsyncSessions:
         session = await response.parse()
         assert_matches_type(SessionListResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncFleet) -> None:
         async with async_client.sessions.with_streaming_response.list() as response:
@@ -406,7 +406,7 @@ class TestAsyncSessions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_delete(self, async_client: AsyncFleet) -> None:
         session = await async_client.sessions.delete(
@@ -414,7 +414,7 @@ class TestAsyncSessions:
         )
         assert_matches_type(SessionDeleteResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncFleet) -> None:
         response = await async_client.sessions.with_raw_response.delete(
@@ -426,7 +426,7 @@ class TestAsyncSessions:
         session = await response.parse()
         assert_matches_type(SessionDeleteResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncFleet) -> None:
         async with async_client.sessions.with_streaming_response.delete(
@@ -440,7 +440,7 @@ class TestAsyncSessions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_delete(self, async_client: AsyncFleet) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
@@ -448,7 +448,7 @@ class TestAsyncSessions:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_visit_page(self, async_client: AsyncFleet) -> None:
         session = await async_client.sessions.visit_page(
@@ -457,7 +457,7 @@ class TestAsyncSessions:
         )
         assert_matches_type(SessionVisitPageResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_visit_page_with_all_params(self, async_client: AsyncFleet) -> None:
         session = await async_client.sessions.visit_page(
@@ -467,7 +467,7 @@ class TestAsyncSessions:
         )
         assert_matches_type(SessionVisitPageResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_visit_page(self, async_client: AsyncFleet) -> None:
         response = await async_client.sessions.with_raw_response.visit_page(
@@ -480,7 +480,7 @@ class TestAsyncSessions:
         session = await response.parse()
         assert_matches_type(SessionVisitPageResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_visit_page(self, async_client: AsyncFleet) -> None:
         async with async_client.sessions.with_streaming_response.visit_page(
@@ -495,7 +495,7 @@ class TestAsyncSessions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_visit_page(self, async_client: AsyncFleet) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
@@ -504,13 +504,13 @@ class TestAsyncSessions:
                 url="url",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_warm_up(self, async_client: AsyncFleet) -> None:
         session = await async_client.sessions.warm_up()
         assert_matches_type(SessionWarmUpResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_warm_up(self, async_client: AsyncFleet) -> None:
         response = await async_client.sessions.with_raw_response.warm_up()
@@ -520,7 +520,7 @@ class TestAsyncSessions:
         session = await response.parse()
         assert_matches_type(SessionWarmUpResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_warm_up(self, async_client: AsyncFleet) -> None:
         async with async_client.sessions.with_streaming_response.warm_up() as response:

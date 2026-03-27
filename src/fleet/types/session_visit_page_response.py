@@ -8,6 +8,8 @@ __all__ = ["SessionVisitPageResponse", "Response"]
 
 
 class Response(BaseModel):
+    """Response data for a navigation request."""
+
     timestamp: float
 
     url: str
